@@ -55,6 +55,11 @@ const dictionary = {
     hoursLabel: 'Режим работы',
     footerText: '© 2026 Adal Works · Астана, Казахстан',
     whatsappText: 'Здравствуйте, Adal Works! Хочу обсудить клининг для объекта.',
+    pageTitle: 'Клининг в Астане — коммерческая уборка БЦ, офисов и ЖК | Adal Works',
+    pageDescription:
+      'Коммерческий клининг в Астане с 2018 года: уборка БЦ, офисов, ЖК и паркингов. 80 сотрудников, 21 объект на ежедневном обслуживании.',
+    schemaDescription:
+      'Коммерческий клининг в Астане с 2018 года: бизнес-центры, офисы, жилые комплексы, паркинги и промышленные объекты.',
   },
   kz: {
     navServices: 'Қызметтер',
@@ -112,6 +117,11 @@ const dictionary = {
     hoursLabel: 'Жұмыс уақыты',
     footerText: '© 2026 Adal Works · Астана, Қазақстан',
     whatsappText: 'Сәлеметсіз бе, Adal Works! Объектіге клининг қызметін талқылағым келеді.',
+    pageTitle: 'Астанадағы клининг — БО, кеңселер мен ТК коммерциялық тазалауы | Adal Works',
+    pageDescription:
+      'Астанада 2018 жылдан бері коммерциялық клининг: БО, кеңселер, ТК және паркингтерді тазалау. 80 қызметкер, күнделікті 21 объект.',
+    schemaDescription:
+      'Астанада 2018 жылдан коммерциялық клининг: бизнес-орталықтар, кеңселер, тұрғын үй кешендері, паркингтер және өнеркәсіптік объектілер.',
   },
   en: {
     navServices: 'Services',
@@ -169,6 +179,11 @@ const dictionary = {
     hoursLabel: 'Working hours',
     footerText: '© 2026 Adal Works · Astana, Kazakhstan',
     whatsappText: 'Hello, Adal Works! I would like to discuss cleaning services for a facility.',
+    pageTitle: 'Commercial cleaning in Astana — business centers, offices and residences | Adal Works',
+    pageDescription:
+      'Commercial cleaning in Astana since 2018: business centers, offices, residential complexes and parking. 80 staff, 21 sites served daily.',
+    schemaDescription:
+      'Commercial cleaning in Astana since 2018: business centers, offices, residential complexes, parking facilities and industrial sites.',
   },
 };
 
@@ -176,22 +191,47 @@ const menuButton = document.querySelector('[data-menu-button]');
 const mobileMenu = document.querySelector('[data-mobile-menu]');
 const languageButtons = document.querySelectorAll('[data-lang]');
 
+const locales = { ru: 'ru_KZ', kz: 'kk_KZ', en: 'en_US' };
+
+const setMetaContent = (selector, value) => {
+  const node = document.querySelector(selector);
+  if (node && value) node.setAttribute('content', value);
+};
+
 const setLanguage = (lang) => {
-  const copy = dictionary[lang] || dictionary.ru;
-  document.documentElement.lang = lang === 'kz' ? 'kk' : lang;
+  const active = dictionary[lang] ? lang : 'kz';
+  const copy = dictionary[active];
+  document.documentElement.lang = active === 'kz' ? 'kk' : active;
   document.querySelectorAll('[data-i18n]').forEach((node) => {
     const key = node.dataset.i18n;
     if (copy[key]) node.textContent = copy[key];
   });
+  if (copy.pageTitle) document.title = copy.pageTitle;
+  setMetaContent('meta[name="description"]', copy.pageDescription);
+  setMetaContent('meta[property="og:title"]', copy.pageTitle);
+  setMetaContent('meta[property="og:description"]', copy.pageDescription);
+  setMetaContent('meta[property="og:locale"]', locales[active]);
+  setMetaContent('meta[name="twitter:title"]', copy.pageTitle);
+  setMetaContent('meta[name="twitter:description"]', copy.pageDescription);
+  const schemaNode = document.querySelector('script[type="application/ld+json"]');
+  if (schemaNode && copy.schemaDescription) {
+    try {
+      const data = JSON.parse(schemaNode.textContent);
+      data.description = copy.schemaDescription;
+      schemaNode.textContent = JSON.stringify(data, null, 2);
+    } catch {
+      // Keep the static schema if the block cannot be parsed.
+    }
+  }
   languageButtons.forEach((button) => {
-    button.classList.toggle('is-active', button.dataset.lang === lang);
+    button.classList.toggle('is-active', button.dataset.lang === active);
   });
   document.querySelectorAll('[data-whatsapp]').forEach((link) => {
     link.href = `https://wa.me/77003330999?text=${encodeURIComponent(copy.whatsappText)}`;
     link.setAttribute('target', '_blank');
     link.setAttribute('rel', 'noopener');
   });
-  localStorage.setItem('adalworks-language', lang);
+  localStorage.setItem('adalworks-language', active);
 };
 
 menuButton?.addEventListener('click', () => {
@@ -226,4 +266,5 @@ document.querySelectorAll('.section, .stats, .contact').forEach((node) => {
   observer.observe(node);
 });
 
-setLanguage(localStorage.getItem('adalworks-language') || 'ru');
+const savedLanguage = localStorage.getItem('adalworks-language');
+setLanguage(dictionary[savedLanguage] ? savedLanguage : 'kz');
