@@ -1,6 +1,7 @@
 const dictionary = {
   ru: {
     navServices: 'Услуги',
+    navTraining: 'Обучение и аудит',
     navWorks: 'Работы',
     navFacilities: 'Объекты',
     navAbout: 'О нас',
@@ -33,6 +34,24 @@ const dictionary = {
     service5Text: 'Оперативная уборка снега с дворов, парковок, пешеходных зон. Обработка реагентами. 24/7 в сезон.',
     service6Title: 'Промышленный клининг',
     service6Text: 'Уборка промышленных объектов, складов, производственных помещений.',
+    trainingTitle: 'Обучение и аудит клининга',
+    trainingLead: 'Делимся опытом Adal Works: обучаем команды и проверяем реальное состояние уборки на вашем объекте.',
+    training1Title: 'Обучение клинингу',
+    training1Intro: 'Обучаем персонал на казахском и русском языках.',
+    training1Point1: 'Процесс уборки: порядок работ и стандарты',
+    training1Point2: 'Химия: правильный выбор и безопасное применение',
+    training1Point3: 'Инвентарь и оборудование: выбор и работа с ним',
+    training1Point4: 'Поверхности: уход за разными материалами без повреждений',
+    training1Button: 'Заявка на обучение',
+    training1Whatsapp: 'Здравствуйте! Интересует обучение клинингу',
+    training2Title: 'Аудит клининга на объекте',
+    training2Intro: 'Выезжаем на объект и полностью проверяем систему уборки.',
+    training2Point1: 'Аудит поверхностей: состояние и качество уборки',
+    training2Point2: 'Аудит процессов: график, порядок работ, контроль',
+    training2Point3: 'Тестирование персонала: уровень знаний',
+    training2Point4: 'Оценка вовлечённости команды в работу',
+    training2Button: 'Заявка на аудит',
+    training2Whatsapp: 'Здравствуйте! Интересует аудит клининга на объекте',
     worksTag: 'Работы',
     worksTitle: 'Чистота, которую видно на объекте',
     facilitiesTag: 'Объекты',
@@ -65,6 +84,7 @@ const dictionary = {
   },
   kz: {
     navServices: 'Қызметтер',
+    navTraining: 'Оқыту және аудит',
     navWorks: 'Біз атқарған жұмыстар',
     navFacilities: 'Нысандар',
     navAbout: 'Біз туралы',
@@ -97,6 +117,25 @@ const dictionary = {
     service5Text: 'Аулалардан, паркингтерден қарды жедел тазалау. Реагенттер. Маусымда 24/7.',
     service6Title: 'Өнеркәсіптік клининг',
     service6Text: 'Өнеркәсіптік нысандарды, қоймаларды, өндірістік үй-жайларды тазалау.',
+    trainingTitle: 'Клининг бойынша оқыту және аудит',
+    trainingLead:
+      'Adal Works тәжірибесімен бөлісеміз: командаларды оқытамыз және нысаныңыздағы тазалық жұмысының нақты жағдайын тексереміз.',
+    training1Title: 'Клининг бойынша оқыту',
+    training1Intro: 'Қызметкерлерді қазақ және орыс тілдерінде оқытамыз.',
+    training1Point1: 'Тазалау процесі: жұмыс реті мен стандарттар',
+    training1Point2: 'Химия: дұрыс таңдау және қауіпсіз қолдану',
+    training1Point3: 'Құрал-жабдық: таңдау және онымен жұмыс істеу',
+    training1Point4: 'Беттер: әр түрлі материалдарды зақымдамай күту',
+    training1Button: 'Оқуға өтінім',
+    training1Whatsapp: 'Сәлеметсіз бе! Клининг бойынша оқыту қызықтырады',
+    training2Title: 'Нысандағы клининг аудиті',
+    training2Intro: 'Нысанға барып, тазалау жүйесін толық тексереміз.',
+    training2Point1: 'Беттер аудиті: жағдайы мен тазалау сапасы',
+    training2Point2: 'Процестер аудиті: кесте, жұмыс реті, бақылау',
+    training2Point3: 'Персоналды тестілеу: білім деңгейі',
+    training2Point4: 'Команданың жұмысқа деген ынтасын бағалау',
+    training2Button: 'Аудитке өтінім',
+    training2Whatsapp: 'Сәлеметсіз бе! Нысандағы клининг аудиті қызықтырады',
     worksTag: 'Біз атқарған жұмыстар',
     worksTitle: 'Нысанда көрінетін тазалық',
     facilitiesTag: 'Нысандар',
@@ -129,6 +168,7 @@ const dictionary = {
   },
   en: {
     navServices: 'Services',
+    navTraining: 'Training & Audit',
     navWorks: 'Works',
     navFacilities: 'Facilities',
     navAbout: 'About',
@@ -161,6 +201,24 @@ const dictionary = {
     service5Text: 'Rapid snow removal from yards, parking, pedestrian areas. Reagent treatment. 24/7 in season.',
     service6Title: 'Industrial cleaning',
     service6Text: 'Cleaning of industrial facilities, warehouses and production spaces.',
+    trainingTitle: 'Cleaning Training & Audit',
+    trainingLead: "We share Adal Works' experience: we train teams and check the real state of cleaning at your site.",
+    training1Title: 'Cleaning Training',
+    training1Intro: 'We train staff in Kazakh and Russian.',
+    training1Point1: 'Cleaning process: workflow and standards',
+    training1Point2: 'Chemicals: right choice and safe use',
+    training1Point3: 'Tools and equipment: selection and handling',
+    training1Point4: 'Surfaces: caring for different materials without damage',
+    training1Button: 'Request training',
+    training1Whatsapp: "Hello! I'm interested in cleaning training",
+    training2Title: 'On-site Cleaning Audit',
+    training2Intro: 'We visit your site and fully review the cleaning system.',
+    training2Point1: 'Surface audit: condition and cleaning quality',
+    training2Point2: 'Process audit: schedule, workflow, control',
+    training2Point3: 'Staff testing: knowledge level',
+    training2Point4: 'Team engagement assessment',
+    training2Button: 'Request an audit',
+    training2Whatsapp: "Hello! I'm interested in an on-site cleaning audit",
     worksTag: 'Works',
     worksTitle: 'Cleanliness you can see on site',
     facilitiesTag: 'Facilities',
@@ -271,7 +329,10 @@ const setLanguage = (lang, { persist = false } = {}) => {
     button.classList.toggle('is-active', button.dataset.lang === active);
   });
   document.querySelectorAll('[data-whatsapp]').forEach((link) => {
-    link.href = `https://wa.me/77003330999?text=${encodeURIComponent(copy.whatsappText)}`;
+    const messageKey = link.getAttribute('data-i18n-whatsapp');
+    const message =
+      messageKey && Object.prototype.hasOwnProperty.call(copy, messageKey) ? copy[messageKey] : copy.whatsappText;
+    link.href = `https://wa.me/77003330999?text=${encodeURIComponent(message)}`;
     link.setAttribute('target', '_blank');
     link.setAttribute('rel', 'noopener');
   });
