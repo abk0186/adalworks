@@ -198,13 +198,48 @@ const mobileMenu = document.querySelector('[data-mobile-menu]');
 const languageButtons = document.querySelectorAll('[data-lang]');
 
 const locales = { ru: 'ru_KZ', kz: 'kk_KZ', en: 'en_US' };
+const languageStorageKey = 'adalworks-language';
+
+const languageFromTag = (tag) => {
+  if (typeof tag !== 'string') return '';
+  const primary = tag.trim().toLowerCase().split(/[-_]/)[0];
+  if (primary === 'ru') return 'ru';
+  if (primary === 'en') return 'en';
+  if (primary === 'kk' || primary === 'kz') return 'kz';
+  return '';
+};
+
+const detectLanguage = () => {
+  const tags = [];
+  if (typeof navigator !== 'undefined') {
+    const list = navigator.languages;
+    if (list && typeof list !== 'string' && typeof list.length === 'number') {
+      for (let index = 0; index < list.length; index += 1) tags.push(list[index]);
+    }
+    if (typeof navigator.language === 'string') tags.push(navigator.language);
+  }
+  for (const tag of tags) {
+    const match = languageFromTag(tag);
+    if (match) return match;
+  }
+  return 'kz';
+};
+
+const readSavedLanguage = () => {
+  try {
+    const saved = localStorage.getItem(languageStorageKey);
+    return dictionary[saved] ? saved : '';
+  } catch {
+    return '';
+  }
+};
 
 const setMetaContent = (selector, value) => {
   const node = document.querySelector(selector);
   if (node && value) node.setAttribute('content', value);
 };
 
-const setLanguage = (lang) => {
+const setLanguage = (lang, { persist = false } = {}) => {
   const active = dictionary[lang] ? lang : 'kz';
   const copy = dictionary[active];
   document.documentElement.lang = active === 'kz' ? 'kk' : active;
@@ -240,7 +275,12 @@ const setLanguage = (lang) => {
     link.setAttribute('target', '_blank');
     link.setAttribute('rel', 'noopener');
   });
-  localStorage.setItem('adalworks-language', active);
+  if (!persist) return;
+  try {
+    localStorage.setItem(languageStorageKey, active);
+  } catch {
+    // The choice still applies for this visit when storage is blocked.
+  }
 };
 
 menuButton?.addEventListener('click', () => {
@@ -258,7 +298,7 @@ mobileMenu?.querySelectorAll('a').forEach((link) => {
 });
 
 languageButtons.forEach((button) => {
-  button.addEventListener('click', () => setLanguage(button.dataset.lang));
+  button.addEventListener('click', () => setLanguage(button.dataset.lang, { persist: true }));
 });
 
 const observer = new IntersectionObserver(
@@ -275,5 +315,5 @@ document.querySelectorAll('.section, .stats, .contact').forEach((node) => {
   observer.observe(node);
 });
 
-const savedLanguage = localStorage.getItem('adalworks-language');
-setLanguage(dictionary[savedLanguage] ? savedLanguage : 'kz');
+const savedLanguage = readSavedLanguage();
+setLanguage(savedLanguage || detectLanguage());
