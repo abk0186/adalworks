@@ -20,7 +20,9 @@
       property="og:description"
       content="Астанада 2018 жылдан бері коммерциялық клининг: бизнес-орталықтар, кеңселер, ТҮК және паркингтерді тазалау. 80 қызметкер, күн сайын 21 нысан."
     />
-    <meta property="og:image" content="https://adalworks.kz/assets/hero-machine.jpg" />
+    <meta property="og:image" content="https://adalworks.kz/assets/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="Adal Works" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Астанадағы клининг — бизнес-орталықтар, кеңселер мен ТҮК коммерциялық тазалауы | Adal Works" />
@@ -28,8 +30,12 @@
       name="twitter:description"
       content="Астанада 2018 жылдан бері коммерциялық клининг: бизнес-орталықтар, кеңселер, ТҮК және паркингтерді тазалау. 80 қызметкер, күн сайын 21 нысан."
     />
-    <meta name="twitter:image" content="https://adalworks.kz/assets/hero-machine.jpg" />
-    <link rel="preload" href="assets/hero-machine.jpg" as="image" />
+    <meta name="twitter:image" content="https://adalworks.kz/assets/og-image.jpg" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="preload" href="assets/hero-machine.webp" as="image" type="image/webp" fetchpriority="high" />
     <link rel="stylesheet" href="styles.css" />
     <script type="application/ld+json">
       {
@@ -39,7 +45,8 @@
         "name": "Adal Works",
         "description": "Астанада 2018 жылдан коммерциялық клининг: бизнес-орталықтар, кеңселер, тұрғын үй кешендері, паркингтер және өнеркәсіптік нысандар.",
         "url": "https://adalworks.kz/",
-        "image": "https://adalworks.kz/assets/hero-machine.jpg",
+        "image": "https://adalworks.kz/assets/og-image.jpg",
+        "logo": "https://adalworks.kz/assets/logo.png",
         "telephone": "+77003330999",
         "email": "adalworks.ads@gmail.com",
         "address": {
@@ -52,14 +59,91 @@
           "name": "Astana"
         },
         "foundingDate": "2018",
-        "openingHours": "Mo-Su 08:00-22:00"
+        "openingHours": "Mo-Su 08:00-22:00",
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "08:00",
+          "closes": "22:00"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+77003330999",
+          "contactType": "customer service",
+          "availableLanguage": ["kk", "ru", "en"]
+        },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Қызметтер",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Бизнес-орталықтар мен кеңселерді тазалау"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Тұрғын үй кешендерін тазалау"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Паркингтерді тазалау"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Аумақты тазалау және көгалдандыру"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Қардан тазарту және көктайғаққа қарсы өңдеу"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Өнеркәсіптік клининг"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Клининг бойынша оқыту"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Нысандағы клининг аудиті"
+              }
+            }
+          ]
+        }
       }
     </script>
   </head>
   <body>
     <header class="site-header" data-header>
       <a class="brand" href="#top" aria-label="Adal Works">
-        <img src="assets/logo.png" alt="Adal Works" />
+        <picture>
+          <source srcset="assets/logo.webp" type="image/webp" />
+          <img src="assets/logo.png" alt="Adal Works" width="52" height="38" />
+        </picture>
         <span>Adal Works</span>
       </a>
 
@@ -90,7 +174,10 @@
     </header>
 
     <a class="whatsapp-float" href="https://wa.me/77003330999" data-whatsapp aria-label="WhatsApp-қа жазу">
-      <img src="assets/whatsapp.png" alt="WhatsApp Adal Works" />
+      <picture>
+        <source srcset="assets/whatsapp.webp" type="image/webp" />
+        <img src="assets/whatsapp.png" alt="WhatsApp Adal Works" width="36" height="36" />
+      </picture>
     </a>
 
     <div class="mobile-menu" data-mobile-menu>
@@ -116,7 +203,16 @@
           </div>
         </div>
         <div class="hero-media" aria-label="Adal Works кәсіби техникасы">
-          <img src="assets/hero-machine.jpg" alt="Adal Works қызметкері еден жуу машинасымен" />
+          <picture>
+            <source srcset="assets/hero-machine.webp" type="image/webp" />
+            <img
+              src="assets/hero-machine.jpg"
+              alt="Adal Works қызметкері еден жуу машинасымен"
+              width="1707"
+              height="1280"
+              fetchpriority="high"
+            />
+          </picture>
           <div class="hero-panel">
             <span data-i18n="heroPanelTop">күнделікті қызмет</span>
             <strong>21</strong>
@@ -229,16 +325,16 @@
         </div>
         <div class="photo-marquee work-gallery" aria-label="Adal Works жұмыстарының фотолары">
           <div class="marquee-track">
-            <img src="assets/work-wide.jpg" alt="Коммерциялық нысанды тазалау" />
-            <img src="assets/work-vertical-1.jpg" alt="Клининг жұмыс процесі" />
-            <img src="assets/work-square.jpg" alt="Аумақты кәсіби тазалау" />
-            <img src="assets/work-vertical-2.jpg" alt="Тазалау кезіндегі Adal Works қызметкері" />
-            <img src="assets/team-office.jpg" alt="Нысандағы команда" />
-            <img src="assets/work-wide.jpg" alt="" aria-hidden="true" />
-            <img src="assets/work-vertical-1.jpg" alt="" aria-hidden="true" />
-            <img src="assets/work-square.jpg" alt="" aria-hidden="true" />
-            <img src="assets/work-vertical-2.jpg" alt="" aria-hidden="true" />
-            <img src="assets/team-office.jpg" alt="" aria-hidden="true" />
+            <picture><source srcset="assets/work-wide.webp" type="image/webp" /><img src="assets/work-wide.jpg" alt="Коммерциялық нысанды тазалау" width="460" height="340" loading="lazy" decoding="async" /></picture>
+            <picture><source srcset="assets/work-vertical-1.webp" type="image/webp" /><img src="assets/work-vertical-1.jpg" alt="Клининг жұмыс процесі" width="320" height="340" loading="lazy" decoding="async" /></picture>
+            <picture><source srcset="assets/work-square.webp" type="image/webp" /><img src="assets/work-square.jpg" alt="Аумақты кәсіби тазалау" width="320" height="340" loading="lazy" decoding="async" /></picture>
+            <picture><source srcset="assets/work-vertical-2.webp" type="image/webp" /><img src="assets/work-vertical-2.jpg" alt="Тазалау кезіндегі Adal Works қызметкері" width="320" height="340" loading="lazy" decoding="async" /></picture>
+            <picture><source srcset="assets/team-office.webp" type="image/webp" /><img src="assets/team-office.jpg" alt="Нысандағы команда" width="460" height="340" loading="lazy" decoding="async" /></picture>
+            <picture><source srcset="assets/work-wide.webp" type="image/webp" /><img src="assets/work-wide.jpg" alt="" aria-hidden="true" width="460" height="340" loading="lazy" decoding="async" /></picture>
+            <picture><source srcset="assets/work-vertical-1.webp" type="image/webp" /><img src="assets/work-vertical-1.jpg" alt="" aria-hidden="true" width="320" height="340" loading="lazy" decoding="async" /></picture>
+            <picture><source srcset="assets/work-square.webp" type="image/webp" /><img src="assets/work-square.jpg" alt="" aria-hidden="true" width="320" height="340" loading="lazy" decoding="async" /></picture>
+            <picture><source srcset="assets/work-vertical-2.webp" type="image/webp" /><img src="assets/work-vertical-2.jpg" alt="" aria-hidden="true" width="320" height="340" loading="lazy" decoding="async" /></picture>
+            <picture><source srcset="assets/team-office.webp" type="image/webp" /><img src="assets/team-office.jpg" alt="" aria-hidden="true" width="460" height="340" loading="lazy" decoding="async" /></picture>
           </div>
         </div>
       </section>
@@ -250,16 +346,16 @@
         </div>
         <div class="photo-marquee facility-strip" aria-label="Нысандар фотолары">
           <div class="marquee-track reverse-speed">
-            <img src="assets/object-1.png" alt="Adal Works қызмет көрсететін нысан" />
-            <img src="assets/object-2.png" alt="Қызмет көрсетілетін тұрғын үй кешені" />
-            <img src="assets/object-3.png" alt="Коммерциялық нысан" />
-            <img src="assets/object-4.png" alt="Нысан аумағы" />
-            <img src="assets/team-portrait.jpg" alt="Adal Works командасы" />
-            <img src="assets/object-1.png" alt="" aria-hidden="true" />
-            <img src="assets/object-2.png" alt="" aria-hidden="true" />
-            <img src="assets/object-3.png" alt="" aria-hidden="true" />
-            <img src="assets/object-4.png" alt="" aria-hidden="true" />
-            <img src="assets/team-portrait.jpg" alt="" aria-hidden="true" />
+            <picture><source srcset="assets/object-1.webp" type="image/webp" /><img src="assets/object-1.png" alt="Adal Works қызмет көрсететін нысан" width="300" height="210" loading="lazy" decoding="async" /></picture>
+            <picture><source srcset="assets/object-2.webp" type="image/webp" /><img src="assets/object-2.png" alt="Қызмет көрсетілетін тұрғын үй кешені" width="300" height="210" loading="lazy" decoding="async" /></picture>
+            <picture><source srcset="assets/object-3.webp" type="image/webp" /><img src="assets/object-3.png" alt="Коммерциялық нысан" width="300" height="210" loading="lazy" decoding="async" /></picture>
+            <picture><source srcset="assets/object-4.webp" type="image/webp" /><img src="assets/object-4.png" alt="Нысан аумағы" width="300" height="210" loading="lazy" decoding="async" /></picture>
+            <picture><source srcset="assets/team-portrait.webp" type="image/webp" /><img src="assets/team-portrait.jpg" alt="Adal Works командасы" width="300" height="210" loading="lazy" decoding="async" /></picture>
+            <picture><source srcset="assets/object-1.webp" type="image/webp" /><img src="assets/object-1.png" alt="" aria-hidden="true" width="300" height="210" loading="lazy" decoding="async" /></picture>
+            <picture><source srcset="assets/object-2.webp" type="image/webp" /><img src="assets/object-2.png" alt="" aria-hidden="true" width="300" height="210" loading="lazy" decoding="async" /></picture>
+            <picture><source srcset="assets/object-3.webp" type="image/webp" /><img src="assets/object-3.png" alt="" aria-hidden="true" width="300" height="210" loading="lazy" decoding="async" /></picture>
+            <picture><source srcset="assets/object-4.webp" type="image/webp" /><img src="assets/object-4.png" alt="" aria-hidden="true" width="300" height="210" loading="lazy" decoding="async" /></picture>
+            <picture><source srcset="assets/team-portrait.webp" type="image/webp" /><img src="assets/team-portrait.jpg" alt="" aria-hidden="true" width="300" height="210" loading="lazy" decoding="async" /></picture>
           </div>
         </div>
       </section>
@@ -267,16 +363,16 @@
       <section class="section about" id="about">
         <div class="photo-marquee about-media" aria-label="Adal Works жұмыстарының фотолары">
           <div class="marquee-track about-track">
-            <img src="assets/work-wide.jpg" alt="Нысанды кәсіби тазалау" />
-            <img src="assets/work-vertical-1.jpg" alt="Adal Works командасының жұмысы" />
-            <img src="assets/work-square.jpg" alt="Аумақты тазалау" />
-            <img src="assets/work-vertical-2.jpg" alt="Adal Works қызметкері" />
-            <img src="assets/hero-team.jpg" alt="Сертификаттары бар Adal Works командасы" />
-            <img src="assets/work-wide.jpg" alt="" aria-hidden="true" />
-            <img src="assets/work-vertical-1.jpg" alt="" aria-hidden="true" />
-            <img src="assets/work-square.jpg" alt="" aria-hidden="true" />
-            <img src="assets/work-vertical-2.jpg" alt="" aria-hidden="true" />
-            <img src="assets/hero-team.jpg" alt="" aria-hidden="true" />
+            <picture><source srcset="assets/work-wide.webp" type="image/webp" /><img src="assets/work-wide.jpg" alt="Нысанды кәсіби тазалау" width="310" height="360" loading="lazy" decoding="async" /></picture>
+            <picture><source srcset="assets/work-vertical-1.webp" type="image/webp" /><img src="assets/work-vertical-1.jpg" alt="Adal Works командасының жұмысы" width="310" height="360" loading="lazy" decoding="async" /></picture>
+            <picture><source srcset="assets/work-square.webp" type="image/webp" /><img src="assets/work-square.jpg" alt="Аумақты тазалау" width="310" height="360" loading="lazy" decoding="async" /></picture>
+            <picture><source srcset="assets/work-vertical-2.webp" type="image/webp" /><img src="assets/work-vertical-2.jpg" alt="Adal Works қызметкері" width="310" height="360" loading="lazy" decoding="async" /></picture>
+            <picture><source srcset="assets/hero-team.webp" type="image/webp" /><img src="assets/hero-team.jpg" alt="Сертификаттары бар Adal Works командасы" width="310" height="360" loading="lazy" decoding="async" /></picture>
+            <picture><source srcset="assets/work-wide.webp" type="image/webp" /><img src="assets/work-wide.jpg" alt="" aria-hidden="true" width="310" height="360" loading="lazy" decoding="async" /></picture>
+            <picture><source srcset="assets/work-vertical-1.webp" type="image/webp" /><img src="assets/work-vertical-1.jpg" alt="" aria-hidden="true" width="310" height="360" loading="lazy" decoding="async" /></picture>
+            <picture><source srcset="assets/work-square.webp" type="image/webp" /><img src="assets/work-square.jpg" alt="" aria-hidden="true" width="310" height="360" loading="lazy" decoding="async" /></picture>
+            <picture><source srcset="assets/work-vertical-2.webp" type="image/webp" /><img src="assets/work-vertical-2.jpg" alt="" aria-hidden="true" width="310" height="360" loading="lazy" decoding="async" /></picture>
+            <picture><source srcset="assets/hero-team.webp" type="image/webp" /><img src="assets/hero-team.jpg" alt="" aria-hidden="true" width="310" height="360" loading="lazy" decoding="async" /></picture>
           </div>
         </div>
         <div class="about-copy">
@@ -309,20 +405,20 @@
         </div>
         <div class="photo-marquee certificate-grid" aria-label="Adal Works сертификаттары">
           <div class="marquee-track certificate-track">
-            <img src="assets/cert-1.png" alt="Adal Works сертификаты" />
-            <img src="assets/cert-2.png" alt="Adal Works сертификаты" />
-            <img src="assets/cert-3.png" alt="Adal Works сертификаты" />
-            <img src="assets/cert-4.png" alt="Adal Works сертификаты" />
-            <img src="assets/cert-5.png" alt="Adal Works сертификаты" />
-            <img src="assets/cert-6.png" alt="Adal Works сертификаты" />
-            <img src="assets/cert-7.png" alt="Adal Works сертификаты" />
-            <img src="assets/cert-1.png" alt="" aria-hidden="true" />
-            <img src="assets/cert-2.png" alt="" aria-hidden="true" />
-            <img src="assets/cert-3.png" alt="" aria-hidden="true" />
-            <img src="assets/cert-4.png" alt="" aria-hidden="true" />
-            <img src="assets/cert-5.png" alt="" aria-hidden="true" />
-            <img src="assets/cert-6.png" alt="" aria-hidden="true" />
-            <img src="assets/cert-7.png" alt="" aria-hidden="true" />
+            <picture><source srcset="assets/cert-1.webp" type="image/webp" /><img src="assets/cert-1.png" alt="Adal Works сертификаты" width="210" height="260" loading="lazy" decoding="async" /></picture>
+            <picture><source srcset="assets/cert-2.webp" type="image/webp" /><img src="assets/cert-2.png" alt="Adal Works сертификаты" width="210" height="260" loading="lazy" decoding="async" /></picture>
+            <picture><source srcset="assets/cert-3.webp" type="image/webp" /><img src="assets/cert-3.png" alt="Adal Works сертификаты" width="210" height="260" loading="lazy" decoding="async" /></picture>
+            <picture><source srcset="assets/cert-4.webp" type="image/webp" /><img src="assets/cert-4.png" alt="Adal Works сертификаты" width="210" height="260" loading="lazy" decoding="async" /></picture>
+            <picture><source srcset="assets/cert-5.webp" type="image/webp" /><img src="assets/cert-5.png" alt="Adal Works сертификаты" width="210" height="260" loading="lazy" decoding="async" /></picture>
+            <picture><source srcset="assets/cert-6.webp" type="image/webp" /><img src="assets/cert-6.png" alt="Adal Works сертификаты" width="210" height="260" loading="lazy" decoding="async" /></picture>
+            <picture><source srcset="assets/cert-7.webp" type="image/webp" /><img src="assets/cert-7.png" alt="Adal Works сертификаты" width="210" height="260" loading="lazy" decoding="async" /></picture>
+            <picture><source srcset="assets/cert-1.webp" type="image/webp" /><img src="assets/cert-1.png" alt="" aria-hidden="true" width="210" height="260" loading="lazy" decoding="async" /></picture>
+            <picture><source srcset="assets/cert-2.webp" type="image/webp" /><img src="assets/cert-2.png" alt="" aria-hidden="true" width="210" height="260" loading="lazy" decoding="async" /></picture>
+            <picture><source srcset="assets/cert-3.webp" type="image/webp" /><img src="assets/cert-3.png" alt="" aria-hidden="true" width="210" height="260" loading="lazy" decoding="async" /></picture>
+            <picture><source srcset="assets/cert-4.webp" type="image/webp" /><img src="assets/cert-4.png" alt="" aria-hidden="true" width="210" height="260" loading="lazy" decoding="async" /></picture>
+            <picture><source srcset="assets/cert-5.webp" type="image/webp" /><img src="assets/cert-5.png" alt="" aria-hidden="true" width="210" height="260" loading="lazy" decoding="async" /></picture>
+            <picture><source srcset="assets/cert-6.webp" type="image/webp" /><img src="assets/cert-6.png" alt="" aria-hidden="true" width="210" height="260" loading="lazy" decoding="async" /></picture>
+            <picture><source srcset="assets/cert-7.webp" type="image/webp" /><img src="assets/cert-7.png" alt="" aria-hidden="true" width="210" height="260" loading="lazy" decoding="async" /></picture>
           </div>
         </div>
       </section>
@@ -361,6 +457,6 @@
       <a href="mailto:adalworks.ads@gmail.com">adalworks.ads@gmail.com</a>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
   </body>
 </html>
