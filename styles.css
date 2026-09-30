@@ -48,6 +48,10 @@ img {
   max-width: 100%;
 }
 
+picture {
+  display: contents;
+}
+
 button {
   font: inherit;
 }
@@ -578,8 +582,8 @@ h3 {
   background: #0f2c52;
 }
 
-.work-gallery img:nth-child(5n + 1),
-.work-gallery img:nth-child(5n + 5) {
+.work-gallery picture:nth-child(5n + 1) img,
+.work-gallery picture:nth-child(5n + 5) img {
   width: clamp(300px, 32vw, 460px);
 }
 
@@ -980,4 +984,25 @@ h3 {
   .marquee-track {
     animation: none;
   }
+}
+
+.not-found {
+  width: min(760px, calc(100% - 36px));
+  margin: 0 auto;
+  padding: 168px 0 96px;
+}
+
+.not-found h1 {
+  max-width: 16ch;
+  margin-bottom: 18px;
+}
+
+.not-found p {
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.not-found .button {
+  margin-top: 12px;
 }
