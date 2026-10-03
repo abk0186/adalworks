@@ -187,7 +187,7 @@
           <article class="service-card">
             <span>02</span>
             <h3 data-i18n="inc2Title">Открытые парковки зимой</h3>
-            <p data-i18n="inc2Text">Уборка снега и обработка реагентами, 24/7 в сезон.</p>
+            <p data-i18n="inc2Text">Уборка снега и обработка реагентами.</p>
           </article>
           <article class="service-card">
             <span>03</span>
@@ -274,8 +274,8 @@
             <p data-i18n="pq2A">Да, по принципу «полный цикл — один договор»: помещения, паркинг и территория у одного подрядчика.</p>
           </details>
           <details class="faq-item">
-            <summary data-i18n="qSnowQ">Убираете ли вы снег ночью и в выходные?</summary>
-            <p data-i18n="qSnowA">В сезон снегоуборка работает 24/7: дворы, парковки, пешеходные зоны, обработка реагентами.</p>
+            <summary data-i18n="qSnowQ">Как вы убираете снег?</summary>
+            <p data-i18n="qSnowA">Зимой убираем снег с дворов, парковок и пешеходных зон и обрабатываем территорию реагентами. Снегоуборку можно включить в общий договор вместе с уборкой помещений.</p>
           </details>
           <details class="faq-item">
             <summary data-i18n="qFreeQ">Осмотр объекта платный?</summary>
@@ -349,27 +349,19 @@
               <p class="field-error" id="err-entrances" data-error hidden></p>
             </div>
             <div class="field" data-field="floors" data-label="formFloors">
-              <label class="field-label" for="q-floors"><span data-i18n="formFloors">Этажность каждого подъезда</span> <span class="optional">(<span data-i18n="formOptional">необязательно</span>)</span></label>
+              <label class="field-label" for="q-floors"><span data-i18n="formFloors">Этажность каждого подъезда</span></label>
               <input id="q-floors" name="floors" type="text" aria-describedby="err-floors hint-floors" />
               <p class="field-hint" id="hint-floors" data-i18n="formFloorsHint">Например: 9, 9, 12, 16</p>
               <p class="field-error" id="err-floors" data-error hidden></p>
             </div>
             <div class="field" data-field="spaces_zhk" data-label="formSpaces" data-kind="number">
-              <label class="field-label" for="q-spaces_zhk"><span data-i18n="formSpaces">Машиномест в паркинге</span> <span class="optional">(<span data-i18n="formOptional">необязательно</span>)</span></label>
+              <label class="field-label" for="q-spaces_zhk"><span data-i18n="formSpaces">Машиномест в паркинге</span></label>
               <input id="q-spaces_zhk" name="spaces_zhk" type="text" inputmode="numeric" pattern="[0-9]*" autocomplete="off" aria-describedby="err-spaces_zhk hint-spaces_zhk" />
               <p class="field-hint" id="hint-spaces_zhk" data-i18n="formSpacesHint">Если паркинга нет, оставьте пустым</p>
               <p class="field-error" id="err-spaces_zhk" data-error hidden></p>
             </div>
-            <div class="field" data-field="period_zhk" data-label="formPeriod" data-required="select" data-hide-once>
-              <label class="field-label" for="q-period_zhk"><span data-i18n="formPeriod">Периодичность уборки</span><span class="req" aria-hidden="true"> *</span></label>
-              <select id="q-period_zhk" name="period_zhk" aria-describedby="err-period_zhk" aria-required="true">
-                <option value="" data-i18n="formChoose">Выберите</option>
-                <option value="daily" data-i18n="formPeriodDaily">Ежедневно</option>
-                <option value="several" data-i18n="formPeriodSeveral">Несколько раз в неделю</option>
-                <option value="weekly" data-i18n="formPeriodWeekly">Раз в неделю</option>
-                <option value="other" data-i18n="formPeriodOther">Другое, напишу в комментарии</option>
-              </select>
-              <p class="field-error" id="err-period_zhk" data-error hidden></p>
+            <div class="field field-wide form-std" data-field="std_zhk" data-label="formStdLabel" data-static="formStdShort" data-hide-once>
+              <p class="form-std-text" data-i18n="priceZhkStd">Мы рассчитаем стандартный формат уборки ЖК: входные группы — ежедневно с понедельника по субботу, все этажи — 3 раза в неделю (пн, ср, пт), генеральная уборка — раз в месяц.</p>
             </div>
             </div>
             <div class="field-group" data-show-for="bc other">
@@ -454,8 +446,8 @@
             </div>
             <div class="field-group">
             <div class="field field-wide" data-field="address" data-label="formAddress">
-              <label class="field-label" for="q-address"><span data-i18n="formAddress">Адрес или район</span> <span class="optional">(<span data-i18n="formOptional">необязательно</span>)</span></label>
-              <input id="q-address" name="address" type="text" aria-describedby="err-address" placeholder="Астана, район или улица" data-i18n-placeholder="formAddressHint" autocomplete="street-address" />
+              <label class="field-label" for="q-address"><span data-i18n="formAddress">Адрес или название ЖК</span></label>
+              <input id="q-address" name="address" type="text" aria-describedby="err-address" placeholder="Астана, улица или название ЖК" data-i18n-placeholder="formAddressHint" autocomplete="street-address" />
               <p class="field-error" id="err-address" data-error hidden></p>
             </div>
             <div class="field" data-field="start" data-label="formStart">
@@ -464,7 +456,6 @@
                 <option value="" data-i18n="formChoose">Выберите</option>
                 <option value="asap" data-i18n="formStartAsap">Как можно скорее</option>
                 <option value="month" data-i18n="formStartMonth">В течение месяца</option>
-                <option value="season" data-i18n="formStartSeason">К сезону</option>
                 <option value="plan" data-i18n="formStartPlan">Пока планирую</option>
               </select>
               <p class="field-error" id="err-start" data-error hidden></p>
