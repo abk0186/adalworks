@@ -392,9 +392,9 @@ HOME = {
     ),
     "segBcTitle": ("Бизнес-центры и офисы", "Бизнес-орталықтар мен кеңселер", "Business centers and offices"),
     "segBcText": (
-        "Ежедневная и периодическая уборка. Полы, окна, двери, лифты, поручни, лестницы. Вынос мусора по графику.",
-        "Күнделікті және мерзімді тазалау. Еден, терезе, есік, лифт, тұтқа, сатылар. Кесте бойынша қоқыс шығару.",
-        "Daily and periodic cleaning. Floors, windows, doors, elevators, handrails, stairs. Scheduled waste removal.",
+        "Ежедневная и периодическая уборка. Полы, окна, двери, лифты, поручни, лестницы.",
+        "Күнделікті және мерзімді тазалау. Еден, терезе, есік, лифт, тұтқа, сатылар.",
+        "Daily and periodic cleaning. Floors, windows, doors, elevators, handrails, stairs.",
     ),
     "segParkingTitle": ("Паркинги", "Паркингтер", "Parking"),
     "segParkingText": (
@@ -581,9 +581,9 @@ BC = {
         "Business center and office cleaning in Astana | Adal Works",
     ),
     "pageDescription": (
-        "Ежедневная и периодическая уборка бизнес-центров и офисов в Астане: полы, окна, двери, лифты, лестницы, вынос мусора по графику. Под ключ или аутстаффинг. Бесплатный осмотр, безналичный расчёт.",
-        "Астанада бизнес-орталықтар мен кеңселерді күнделікті және мерзімді тазалау: еден, терезе, есік, лифт, сатылар, кесте бойынша қоқыс шығару. Толық қызмет немесе аутстаффинг. Тегін қарау, қолма-қол ақшасыз есеп айырысу.",
-        "Daily and periodic cleaning of business centers and offices in Astana: floors, windows, doors, elevators, stairs, scheduled waste removal. Turnkey or outstaffing. Free site visit, cashless payment.",
+        "Ежедневная и периодическая уборка бизнес-центров и офисов в Астане: полы, окна, двери, лифты, лестницы. Под ключ или аутстаффинг. Бесплатный осмотр, безналичный расчёт.",
+        "Астанада бизнес-орталықтар мен кеңселерді күнделікті және мерзімді тазалау: еден, терезе, есік, лифт, сатылар. Толық қызмет немесе аутстаффинг. Тегін қарау, қолма-қол ақшасыз есеп айырысу.",
+        "Daily and periodic cleaning of business centers and offices in Astana: floors, windows, doors, elevators, stairs. Turnkey or outstaffing. Free site visit, cashless payment.",
     ),
     "schemaDescription": (
         "Уборка бизнес-центров и офисов в Астане по договору: ежедневная и периодическая уборка, форматы под ключ и аутстаффинг.",
@@ -611,8 +611,6 @@ BC = {
     "incTitle": ("Уборка здания и всего, что вокруг", "Ғимаратты және айналасын тазалау", "Cleaning the building and everything around it"),
     "inc1Title": ("Помещения", "Үй-жайлар", "Premises"),
     "inc1Text": ("Полы, окна, двери, лифты, поручни, лестницы.", "Еден, терезе, есік, лифт, тұтқа, сатылар.", "Floors, windows, doors, elevators, handrails, stairs."),
-    "inc2Title": ("Вынос мусора", "Қоқыс шығару", "Waste removal"),
-    "inc2Text": ("По согласованному графику.", "Келісілген кесте бойынша.", "On an agreed schedule."),
     "inc3Title": ("Паркинг", "Паркинг", "Parking"),
     "inc3Text": ("Механизированная уборка поломоечными машинами.", "Еден жуғыш машиналармен механикаландырылған тазалау.", "Mechanized cleaning with scrubber-dryer machines."),
     "inc4Title": ("Территория", "Аумақ", "Grounds"),

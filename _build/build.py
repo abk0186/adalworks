@@ -972,13 +972,14 @@ def build_service(slug, nav_key, page_strings, image, preset):
         </div>
       </section>
 """)
-    n_inc = len([k for k in page_strings if k.startswith("inc") and k.endswith("Title") and k[3:-5].isdigit()])
+    inc_nums = sorted(int(k[3:-5]) for k in page_strings if k.startswith("inc") and k.endswith("Title") and k[3:-5].isdigit())
+    n_inc = len(inc_nums)
     inc = "\n".join(
         f"""          <article class="service-card">
-            <span>{n:02d}</span>
+            <span>{i:02d}</span>
             {p.t(f'inc{n}Title', 'h3')}
             {p.t(f'inc{n}Text', 'p')}
-          </article>""" for n in range(1, n_inc + 1)
+          </article>""" for i, n in enumerate(inc_nums, 1)
     )
     out.append(f"""
       <section class="section intro" id="includes">
@@ -986,7 +987,7 @@ def build_service(slug, nav_key, page_strings, image, preset):
           {p.t('incTag', 'p', 'eyebrow')}
           {p.t('incTitle', 'h2')}
         </div>
-        <div class="service-grid{' is-four' if n_inc == 4 else ''}">
+        <div class="service-grid{' is-four' if n_inc == 4 else ' is-five' if n_inc == 5 else ''}">
 {inc}
         </div>
       </section>
