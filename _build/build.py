@@ -288,7 +288,7 @@ def choice_field(p, name, label, options, required=True, kind="radio", extra_att
 
 
 def input_field(p, name, label, kind="text", required=False, hint=None, attrs="", req_kind=None, wide=False,
-                placeholder=None, extra_attr=""):
+                placeholder=None, extra_attr="", show_optional=True):
     fid = f"q-{name}"
     req_attr = f' data-required="{req_kind or kind}"' if required else ""
     num_attr = ' data-kind="number"' if kind == "number" else ""
@@ -305,7 +305,7 @@ def input_field(p, name, label, kind="text", required=False, hint=None, attrs=""
     hint_html = f'\n              <p class="field-hint" id="hint-{name}" data-i18n="{hint}">{esc(p.s(hint))}</p>' if hint else ""
     cls = "field field-wide" if wide else "field"
     return f"""            <div class="{cls}" data-field="{name}" data-label="{label}"{req_attr}{num_attr}{extra_attr}>
-              {field_label(p, label, fid, required=required, optional=not required)}
+              {field_label(p, label, fid, required=required, optional=show_optional and not required)}
               {control}{hint_html}
               <p class="field-error" id="err-{name}" data-error hidden></p>
             </div>"""
@@ -330,7 +330,7 @@ PERIODS = [("daily", "formPeriodDaily"), ("several", "formPeriodSeveral"), ("wee
 
 
 def quote_form(p, preset=""):
-    p.use("formTag", "formTitle", "formLead", "msgIntro", "msgPage", "formErrRequired", "formErrChoose",
+    p.use("formTag", "formTitle", "formLead", "msgIntro", "msgPage", "formErrRequired", "formErrChoose", "formStdShort", "formStdLabel",
           "formErrPhone", "formErrNumber", "formErrSummary")
 
     def step_title(n):
@@ -354,9 +354,12 @@ def quote_form(p, preset=""):
     ])
     zhk = "\n".join([
         input_field(p, "entrances", "formEntrances", "number", required=True),
-        input_field(p, "floors", "formFloors", "text", hint="formFloorsHint"),
-        input_field(p, "spaces_zhk", "formSpaces", "number", hint="formSpacesHint"),
-        select_field(p, "period_zhk", "formPeriod", PERIODS, required=True, extra_attr=" data-hide-once"),
+        input_field(p, "floors", "formFloors", "text", hint="formFloorsHint", show_optional=False),
+        input_field(p, "spaces_zhk", "formSpaces", "number", hint="formSpacesHint", show_optional=False),
+        # standard residential format replaces the periodicity choice; sent as a short line in the message
+        f"""            <div class="field field-wide form-std" data-field="std_zhk" data-label="formStdLabel" data-static="formStdShort" data-hide-once>
+              {p.t('priceZhkStd', 'p', 'form-std-text')}
+            </div>""",
     ])
     com = "\n".join([
         input_field(p, "area", "formArea", "number", required=True),
@@ -377,8 +380,9 @@ def quote_form(p, preset=""):
         input_field(p, "territory_area", "formTerritoryArea", "number"),
     ])
     common2 = "\n".join([
-        input_field(p, "address", "formAddress", "text", placeholder="formAddressHint", wide=True, attrs=' autocomplete="street-address"'),
-        select_field(p, "start", "formStart", [("asap", "formStartAsap"), ("month", "formStartMonth"), ("season", "formStartSeason"), ("plan", "formStartPlan")]),
+        input_field(p, "address", "formAddress", "text", placeholder="formAddressHint", wide=True, attrs=' autocomplete="street-address"',
+                    show_optional=False),
+        select_field(p, "start", "formStart", [("asap", "formStartAsap"), ("month", "formStartMonth"), ("plan", "formStartPlan")]),
         select_field(p, "role", "formRole", [("osi", "formRoleOsi"), ("uk", "formRoleUk"), ("owner", "formRoleOwner"), ("tenant", "formRoleTenant"), ("other", "formRoleOther")]),
     ])
     step3 = "\n".join([
@@ -674,7 +678,6 @@ def build_home():
         <div><strong data-i18n="statYearsFigure"{' hidden' if not p.s('statYearsFigure') else ''}>{esc(p.s('statYearsFigure'))}</strong>{p.t('statYears')}</div>
         <div><strong>80</strong>{p.t('statStaff')}</div>
         <div><strong data-i18n="statFacilitiesFigure"{' hidden' if not p.s('statFacilitiesFigure') else ''}>{esc(p.s('statFacilitiesFigure'))}</strong>{p.t('statFacilities')}</div>
-        <div><strong>100K</strong>{p.t('statStreets')}</div>
       </section>
 """
     out.append(hero)
@@ -712,7 +715,6 @@ def build_home():
         <div class="section-heading">
           {p.t('segTag', 'p', 'eyebrow')}
           {p.t('segTitle', 'h2')}
-          {p.t('segLead', 'p')}
         </div>
         <div class="segment-grid">
 {chr(10).join(segs)}
@@ -761,7 +763,7 @@ def build_home():
       </section>
 """)
     # pricing
-    zl = "\n".join(f"              {p.t(f'priceZhk{n}', 'li')}" for n in range(1, 5))
+    zl = "\n".join(f"              {p.t(f'priceZhk{n}', 'li')}" for n in range(1, 4))
     cl = "\n".join(f"              {p.t(f'priceCom{n}', 'li')}" for n in range(1, 5))
     out.append(f"""
       <section class="section pricing" id="pricing">
@@ -780,6 +782,7 @@ def build_home():
             <ul>
 {zl}
             </ul>
+            {p.t('priceZhkStd', 'p', 'price-std')}
           </div>
           <div>
             {p.t('priceComTitle', 'strong')}
@@ -840,6 +843,10 @@ def legacy_sections(p):
           {p.t('navTraining', 'p', 'eyebrow')}
           {p.t('trainingTitle', 'h2')}
           {p.t('trainingLead', 'p')}
+        </div>
+        <div class="training-method">
+          {p.t('trainingMethodTitle', 'h3')}
+          {p.t('trainingMethod', 'p')}
         </div>
         <div class="training-grid">
           <article class="training-card">
@@ -997,7 +1004,7 @@ def build_service(slug, nav_key, page_strings, image, preset):
     if has_formats:
         out.append(formats(p))
     if slug == "zhk":
-        params = [f"priceZhk{n}" for n in range(1, 5)]
+        params = [f"priceZhk{n}" for n in range(1, 4)]
     elif slug == "biznes-centr":
         params = [f"priceCom{n}" for n in range(1, 5)]
     elif slug == "parking":
@@ -1005,6 +1012,7 @@ def build_service(slug, nav_key, page_strings, image, preset):
     else:
         params = ["tp1", "tp2", "tp3"]
     plist = "\n".join(f"            {p.t(k, 'li')}" for k in params)
+    std_note = f"\n            {p.t('priceZhkStd', 'p', 'price-std')}" if slug == "zhk" else ""
     out.append(f"""
       <section class="section pricing page-pricing" id="pricing">
         <div class="pricing-copy">
@@ -1020,7 +1028,7 @@ def build_service(slug, nav_key, page_strings, image, preset):
           <div>
             <ul>
 {plist}
-            </ul>
+            </ul>{std_note}
           </div>
         </div>
       </section>
