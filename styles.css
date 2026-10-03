@@ -1586,6 +1586,40 @@ section[id],
   grid-template-columns: repeat(2, 1fr);
 }
 
+/* five cards: 3 + 2 on desktop, 2 + 2 + 1 (full width) on tablet, 1 column on mobile */
+.service-grid.is-five {
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.service-grid.is-five > .service-card {
+  grid-column: span 2;
+}
+
+.service-grid.is-five > .service-card:nth-child(n + 4) {
+  grid-column: span 3;
+}
+
+@media (max-width: 980px) {
+  .service-grid.is-five {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .service-grid.is-five > .service-card,
+  .service-grid.is-five > .service-card:nth-child(n + 4) {
+    grid-column: auto;
+  }
+
+  .service-grid.is-five > .service-card:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .service-grid.is-five {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ---------- v2: formats table ---------- */
 .table-wrap {
   overflow-x: auto;
