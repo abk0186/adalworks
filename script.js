@@ -1,262 +1,19 @@
-const dictionary = {
-  ru: {
-    navServices: 'Услуги',
-    navTraining: 'Обучение и аудит',
-    navWorks: 'Работы',
-    navFacilities: 'Объекты',
-    navAbout: 'О нас',
-    navContact: 'Контакты',
-    heroTag: 'Астана · Коммерческий клининг с 2018 года',
-    heroTitle: 'Коммерческий клининг для бизнеса и жилых комплексов',
-    heroLead: 'БЦ, офисы, жилые комплексы, паркинги, промышленные объекты. 80 сотрудников, 21 объект на ежедневном обслуживании.',
-    ctaContact: 'Связаться с нами',
-    ctaFacilities: 'Наши объекты',
-    heroPanelTop: 'ежедневное обслуживание',
-    heroPanelBottom: 'объект',
-    statYearsFigure: '7+',
-    statYears: 'лет на рынке',
-    statStaff: 'сотрудников',
-    statFacilitiesFigure: '21',
-    statFacilities: 'объект ежедневно',
-    statStreets: 'м² улиц',
-    servicesTag: 'Услуги',
-    servicesTitle: 'Полный цикл — один договор',
-    servicesLead: 'Специализируемся на коммерческом клининге: внутренняя уборка, паркинги, дворовая территория, озеленение.',
-    service1Title: 'Уборка БЦ и офисов',
-    service1Text: 'Ежедневная и периодическая уборка. Полы, окна, двери, лифты, поручни, лестницы. Вынос мусора по графику.',
-    service2Title: 'Уборка жилых комплексов',
-    service2Text: 'Подъезды, лифты, паркинги, дворы и места общего пользования. Долгосрочные договоры с ОСИ и управляющими компаниями.',
-    service3Title: 'Уборка паркингов',
-    service3Text: 'Механизированная мойка подземных паркингов.',
-    service4Title: 'Уборка территории и озеленение',
-    service4Text: 'Подметание, вывоз мусора, уход за газоном — полив, стрижка, удобрение. Круглогодичное обслуживание.',
-    service5Title: 'Снегоуборка и антигололёд',
-    service5Text: 'Оперативная уборка снега с дворов, парковок, пешеходных зон. Обработка реагентами. 24/7 в сезон.',
-    service6Title: 'Промышленный клининг',
-    service6Text: 'Уборка промышленных объектов, складов, производственных помещений.',
-    trainingTitle: 'Обучение и аудит клининга',
-    trainingLead: 'Делимся опытом Adal Works: обучаем команды и проверяем реальное состояние уборки на вашем объекте.',
-    training1Title: 'Обучение клинингу',
-    training1Intro: 'Обучаем персонал на казахском и русском языках.',
-    training1Point1: 'Процесс уборки: порядок работ и стандарты',
-    training1Point2: 'Химия: правильный выбор и безопасное применение',
-    training1Point3: 'Инвентарь и оборудование: выбор и работа с ним',
-    training1Point4: 'Поверхности: уход за разными материалами без повреждений',
-    training1Button: 'Заявка на обучение',
-    training1Whatsapp: 'Здравствуйте! Интересует обучение клинингу',
-    training2Title: 'Аудит клининга на объекте',
-    training2Intro: 'Выезжаем на объект и полностью проверяем систему уборки.',
-    training2Point1: 'Аудит поверхностей: состояние и качество уборки',
-    training2Point2: 'Аудит процессов: график, порядок работ, контроль',
-    training2Point3: 'Тестирование персонала: уровень знаний',
-    training2Point4: 'Оценка вовлечённости команды в работу',
-    training2Button: 'Заявка на аудит',
-    training2Whatsapp: 'Здравствуйте! Интересует аудит клининга на объекте',
-    worksTag: 'Работы',
-    worksTitle: 'Чистота, которую видно на объекте',
-    facilitiesTag: 'Объекты',
-    facilitiesTitle: 'Бизнес-центры, ЖК, паркинги и территории',
-    aboutTag: 'О компании',
-    aboutTitle: 'Команда профессионалов с 2018 года',
-    aboutText: 'Специализируемся на коммерческом клининге в Астане. Регулярно обучаем персонал, используем профессиональную технику и несём полную ответственность за результат.',
-    proof1Title: 'Обученный персонал',
-    proof1Text: 'Регулярные тренинги и сертификация. Каждый сотрудник знает стандарты.',
-    proof2Title: 'Профессиональное оборудование',
-    proof2Text: 'Современная специализированная техника для любого типа объектов.',
-    proof3Title: 'Признание СМИ',
-    proof3Text: 'Интервью на Хабар 24, публикации в деловых изданиях Казахстана.',
-    certTag: 'Награды и признание',
-    certTitle: 'Документы и благодарности',
-    contactTag: 'Контакты',
-    contactTitle: 'Свяжитесь с нами',
-    contactLead: 'Готовы обсудить долгосрочный договор на комплексное обслуживание нескольких объектов. Специальные условия для ОСИ и управляющих компаний.',
-    phoneLabel: 'Телефон / WhatsApp / Telegram',
-    cityLabel: 'Город',
-    cityValue: 'Астана, Казахстан',
-    hoursLabel: 'Режим работы',
-    footerText: '© 2026 Adal Works · Астана, Казахстан',
-    whatsappText: 'Здравствуйте, Adal Works! Хочу обсудить клининг для объекта.',
-    pageTitle: 'Клининг в Астане — коммерческая уборка БЦ, офисов и ЖК | Adal Works',
-    pageDescription:
-      'Коммерческий клининг в Астане с 2018 года: уборка БЦ, офисов, ЖК и паркингов. 80 сотрудников, 21 объект на ежедневном обслуживании.',
-    schemaDescription:
-      'Коммерческий клининг в Астане с 2018 года: бизнес-центры, офисы, жилые комплексы, паркинги и промышленные объекты.',
-  },
-  kz: {
-    navServices: 'Қызметтер',
-    navTraining: 'Оқыту және аудит',
-    navWorks: 'Біз атқарған жұмыстар',
-    navFacilities: 'Нысандар',
-    navAbout: 'Біз туралы',
-    navContact: 'Байланыс',
-    heroTag: 'Астана · 2018 жылдан коммерциялық клининг',
-    heroTitle: 'Бизнес пен тұрғын үй кешендеріне арналған кәсіби тазалық қызметі.',
-    heroLead: 'Бизнес-орталықтар, кеңселер, тұрғын үй кешендері, паркингтер. 80 қызметкер, күн сайын 21 нысан.',
-    ctaContact: 'Бізбен байланысу',
-    ctaFacilities: 'Біздің нысандар',
-    heroPanelTop: 'күнделікті қызмет',
-    heroPanelBottom: 'нысан',
-    statYearsFigure: '',
-    statYears: 'Нарықтағы тәжірибеміз — 7 жылдан астам',
-    statStaff: 'қызметкер',
-    statFacilitiesFigure: '',
-    statFacilities: 'Күн сайын 21 нысан',
-    statStreets: 'м² көше',
-    servicesTag: 'Қызметтер',
-    servicesTitle: 'Толық цикл — бір шарт',
-    servicesLead: 'Коммерциялық клинингке маманданамыз: ішкі тазалау, паркингтер, аула аумағы, көгалдандыру.',
-    service1Title: 'Бизнес-орталықтар мен кеңселерді тазалау',
-    service1Text: 'Күнделікті тазалау. Еден, терезе, есік, лифт, сатылар. Кесте бойынша қоқыс шығару.',
-    service2Title: 'Тұрғын үй кешендерін тазалау',
-    service2Text: 'Кіреберістер, лифттер, паркингтер, аулалар және ортақ аймақтар. МИБ (Мүлік иелерінің бірлестігі) және басқарушы компаниялармен ұзақ мерзімді шарттар.',
-    service3Title: 'Паркингтерді тазалау',
-    service3Text: 'Жерасты паркингтерін механикалық түрде жуу',
-    service4Title: 'Аумақты тазалау және көгалдандыру',
-    service4Text: 'Сыпыру, қоқысты шығару, шөп алаңына күтім. Жыл бойы қызмет.',
-    service5Title: 'Қардан тазарту және көктайғаққа қарсы өңдеу',
-    service5Text: 'Аулалардан, паркингтерден қарды жедел тазалау. Реагенттер. Маусымда 24/7.',
-    service6Title: 'Өнеркәсіптік клининг',
-    service6Text: 'Өнеркәсіптік нысандарды, қоймаларды, өндірістік үй-жайларды тазалау.',
-    trainingTitle: 'Клининг бойынша оқыту және аудит',
-    trainingLead:
-      'Adal Works тәжірибесімен бөлісеміз: командаларды оқытамыз және нысаныңыздағы тазалық жұмысының нақты жағдайын тексереміз.',
-    training1Title: 'Клининг бойынша оқыту',
-    training1Intro: 'Қызметкерлерді қазақ және орыс тілдерінде оқытамыз.',
-    training1Point1: 'Тазалау процесі: жұмыс реті мен стандарттар',
-    training1Point2: 'Химия: дұрыс таңдау және қауіпсіз қолдану',
-    training1Point3: 'Құрал-жабдық: таңдау және онымен жұмыс істеу',
-    training1Point4: 'Беттер: әр түрлі материалдарды зақымдамай күту',
-    training1Button: 'Оқуға өтінім',
-    training1Whatsapp: 'Сәлеметсіз бе! Клининг бойынша оқыту қызықтырады',
-    training2Title: 'Нысандағы клининг аудиті',
-    training2Intro: 'Нысанға барып, тазалау жүйесін толық тексереміз.',
-    training2Point1: 'Беттер аудиті: жағдайы мен тазалау сапасы',
-    training2Point2: 'Процестер аудиті: кесте, жұмыс реті, бақылау',
-    training2Point3: 'Персоналды тестілеу: білім деңгейі',
-    training2Point4: 'Команданың жұмысқа деген ынтасын бағалау',
-    training2Button: 'Аудитке өтінім',
-    training2Whatsapp: 'Сәлеметсіз бе! Нысандағы клининг аудиті қызықтырады',
-    worksTag: 'Біз атқарған жұмыстар',
-    worksTitle: 'Нысанда көрінетін тазалық',
-    facilitiesTag: 'Нысандар',
-    facilitiesTitle: 'Бизнес-орталықтар, ТҮК, паркингтер және аумақтар',
-    aboutTag: 'Компания туралы',
-    aboutTitle: '2018 жылдан кәсіпқойлар командасы',
-    aboutText: 'Астанада коммерциялық клинингке маманданамыз. Персоналды үнемі оқытамыз, кәсіби техника қолданамыз және нәтижеге жауап береміз.',
-    proof1Title: 'Оқытылған персонал',
-    proof1Text: 'Тұрақты тренингтер және сертификация. Әр қызметкер стандарттарды біледі.',
-    proof2Title: 'Кәсіби жабдық',
-    proof2Text: 'Кез келген нысанға арналған заманауи арнайы техника.',
-    proof3Title: 'БАҚ танымалдылығы',
-    proof3Text: 'Хабар 24 сұхбаты, Қазақстанның іскери басылымдарындағы жарияланымдар.',
-    certTag: 'Марапаттар және танылу',
-    certTitle: 'Құжаттар мен алғыс хаттар',
-    contactTag: 'Байланыс',
-    contactTitle: 'Бізбен байланысыңыз',
-    contactLead: 'Бірнеше нысанға кешенді қызмет шартын талқылауға дайынбыз. МИБ (Мүлік иелерінің бірлестігі) және басқарушы компаниялар үшін арнайы шарттар.',
-    phoneLabel: 'Телефон / WhatsApp / Telegram',
-    cityLabel: 'Қала',
-    cityValue: 'Астана, Қазақстан',
-    hoursLabel: 'Жұмыс уақыты',
-    footerText: '© 2026 Adal Works · Астана, Қазақстан',
-    whatsappText: 'Сәлеметсіз бе, Adal Works! Нысанға клининг қызметін талқылағым келеді.',
-    pageTitle: 'Астанадағы клининг — бизнес-орталықтар, кеңселер мен ТҮК коммерциялық тазалауы | Adal Works',
-    pageDescription:
-      'Астанада 2018 жылдан бері коммерциялық клининг: бизнес-орталықтар, кеңселер, ТҮК және паркингтерді тазалау. 80 қызметкер, күн сайын 21 нысан.',
-    schemaDescription:
-      'Астанада 2018 жылдан коммерциялық клининг: бизнес-орталықтар, кеңселер, тұрғын үй кешендері, паркингтер және өнеркәсіптік нысандар.',
-  },
-  en: {
-    navServices: 'Services',
-    navTraining: 'Training & Audit',
-    navWorks: 'Works',
-    navFacilities: 'Facilities',
-    navAbout: 'About',
-    navContact: 'Contact',
-    heroTag: 'Astana · Commercial Cleaning since 2018',
-    heroTitle: 'Professional Cleaning for Business & Residential Complexes',
-    heroLead: 'Business centers, offices, residential complexes, parking lots. 80 staff, 21 facilities served daily.',
-    ctaContact: 'Contact Us',
-    ctaFacilities: 'Our Facilities',
-    heroPanelTop: 'daily service',
-    heroPanelBottom: 'facilities',
-    statYearsFigure: '7+',
-    statYears: 'years in market',
-    statStaff: 'staff members',
-    statFacilitiesFigure: '21',
-    statFacilities: 'facilities daily',
-    statStreets: 'm² of streets',
-    servicesTag: 'Services',
-    servicesTitle: 'Full cycle — one contract',
-    servicesLead: 'Specializing in commercial cleaning: interior, parking, yard territory, landscaping.',
-    service1Title: 'Business centers and offices',
-    service1Text: 'Daily and periodic cleaning. Floors, windows, doors, elevators, stairs. Scheduled waste removal.',
-    service2Title: 'Residential complexes',
-    service2Text: 'Lobbies, elevators, parking, yards and common areas. Long-term contracts with HOAs and property managers.',
-    service3Title: 'Parking facilities',
-    service3Text: 'Mechanized washing of underground parking facilities.',
-    service4Title: 'Territory cleaning and landscaping',
-    service4Text: 'Sweeping, waste removal, lawn care. Year-round maintenance.',
-    service5Title: 'Snow removal and de-icing',
-    service5Text: 'Rapid snow removal from yards, parking, pedestrian areas. Reagent treatment. 24/7 in season.',
-    service6Title: 'Industrial cleaning',
-    service6Text: 'Cleaning of industrial facilities, warehouses and production spaces.',
-    trainingTitle: 'Cleaning Training & Audit',
-    trainingLead: "We share Adal Works' experience: we train teams and check the real state of cleaning at your site.",
-    training1Title: 'Cleaning Training',
-    training1Intro: 'We train staff in Kazakh and Russian.',
-    training1Point1: 'Cleaning process: workflow and standards',
-    training1Point2: 'Chemicals: right choice and safe use',
-    training1Point3: 'Tools and equipment: selection and handling',
-    training1Point4: 'Surfaces: caring for different materials without damage',
-    training1Button: 'Request training',
-    training1Whatsapp: "Hello! I'm interested in cleaning training",
-    training2Title: 'On-site Cleaning Audit',
-    training2Intro: 'We visit your site and fully review the cleaning system.',
-    training2Point1: 'Surface audit: condition and cleaning quality',
-    training2Point2: 'Process audit: schedule, workflow, control',
-    training2Point3: 'Staff testing: knowledge level',
-    training2Point4: 'Team engagement assessment',
-    training2Button: 'Request an audit',
-    training2Whatsapp: "Hello! I'm interested in an on-site cleaning audit",
-    worksTag: 'Works',
-    worksTitle: 'Cleanliness you can see on site',
-    facilitiesTag: 'Facilities',
-    facilitiesTitle: 'Business centers, residences, parking and grounds',
-    aboutTag: 'About',
-    aboutTitle: 'A team of professionals since 2018',
-    aboutText: 'Specializing in commercial cleaning in Astana. Regular staff training, professional equipment, full accountability for results.',
-    proof1Title: 'Trained Staff',
-    proof1Text: 'Regular training and certification for every team member.',
-    proof2Title: 'Professional Equipment',
-    proof2Text: 'Modern specialized machinery for any facility type.',
-    proof3Title: 'Media Recognition',
-    proof3Text: 'Khabar 24 interviews, Kazakhstan business media publications.',
-    certTag: 'Awards and recognition',
-    certTitle: 'Documents and letters of thanks',
-    contactTag: 'Contact',
-    contactTitle: 'Contact Us',
-    contactLead: 'Ready to discuss a long-term contract for multiple facilities. Special terms for HOAs and property managers.',
-    phoneLabel: 'Phone / WhatsApp / Telegram',
-    cityLabel: 'City',
-    cityValue: 'Astana, Kazakhstan',
-    hoursLabel: 'Working hours',
-    footerText: '© 2026 Adal Works · Astana, Kazakhstan',
-    whatsappText: 'Hello, Adal Works! I would like to discuss cleaning services for a facility.',
-    pageTitle: 'Commercial cleaning in Astana — business centers, offices and residences | Adal Works',
-    pageDescription:
-      'Commercial cleaning in Astana since 2018: business centers, offices, residential complexes and parking. 80 staff, 21 sites served daily.',
-    schemaDescription:
-      'Commercial cleaning in Astana since 2018: business centers, offices, residential complexes, parking facilities and industrial sites.',
-  },
-};
+// Adal Works site runtime: i18n, navigation, attribution capture and the quote form.
+// Texts live in /i18n/<page>.js (generated by _build/build.py from _build/content.py).
+const dictionary = window.ADAL_I18N || { ru: {}, kz: {}, en: {} };
+
+const WHATSAPP_NUMBER = '77003330999';
+const languageStorageKey = 'adalworks-language';
+const attributionKey = 'adalworks-attribution';
+const locales = { ru: 'ru_KZ', kz: 'kk_KZ', en: 'en_US' };
+const defaultLanguage = dictionary[document.documentElement.dataset.defaultLang] ? document.documentElement.dataset.defaultLang : 'kz';
+const has = (object, key) => Object.prototype.hasOwnProperty.call(object, key);
 
 const menuButton = document.querySelector('[data-menu-button]');
 const mobileMenu = document.querySelector('[data-mobile-menu]');
 const languageButtons = document.querySelectorAll('[data-lang]');
-
-const locales = { ru: 'ru_KZ', kz: 'kk_KZ', en: 'en_US' };
-const languageStorageKey = 'adalworks-language';
+const quoteForms = [];
+let activeLanguage = defaultLanguage;
 
 const languageFromTag = (tag) => {
   if (typeof tag !== 'string') return '';
@@ -280,7 +37,7 @@ const detectLanguage = () => {
     const match = languageFromTag(tag);
     if (match) return match;
   }
-  return 'kz';
+  return defaultLanguage;
 };
 
 const readSavedLanguage = () => {
@@ -292,21 +49,44 @@ const readSavedLanguage = () => {
   }
 };
 
+const saveLanguage = (lang) => {
+  try {
+    localStorage.setItem(languageStorageKey, lang);
+  } catch {
+    // The choice still applies for this visit when storage is blocked.
+  }
+};
+
 const setMetaContent = (selector, value) => {
   const node = document.querySelector(selector);
   if (node && value) node.setAttribute('content', value);
 };
 
+const whatsappUrl = (message) => `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+
 const setLanguage = (lang, { persist = false } = {}) => {
-  const active = dictionary[lang] ? lang : 'kz';
+  const active = dictionary[lang] ? lang : defaultLanguage;
   const copy = dictionary[active];
+  activeLanguage = active;
   document.documentElement.lang = active === 'kz' ? 'kk' : active;
   document.querySelectorAll('[data-i18n]').forEach((node) => {
     const key = node.dataset.i18n;
-    if (!Object.prototype.hasOwnProperty.call(copy, key)) return;
+    if (!has(copy, key)) return;
     node.textContent = copy[key];
     if (copy[key] === '') node.setAttribute('hidden', '');
     else node.removeAttribute('hidden');
+  });
+  document.querySelectorAll('[data-i18n-aria]').forEach((node) => {
+    const key = node.dataset.i18nAria;
+    if (has(copy, key)) node.setAttribute('aria-label', copy[key]);
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach((node) => {
+    const key = node.dataset.i18nPlaceholder;
+    if (has(copy, key)) node.setAttribute('placeholder', copy[key]);
+  });
+  document.querySelectorAll('[data-i18n-alt]').forEach((node) => {
+    const key = node.dataset.i18nAlt;
+    if (has(copy, key)) node.setAttribute('alt', copy[key]);
   });
   if (copy.pageTitle) document.title = copy.pageTitle;
   setMetaContent('meta[name="description"]', copy.pageDescription);
@@ -326,22 +106,26 @@ const setLanguage = (lang, { persist = false } = {}) => {
     }
   }
   languageButtons.forEach((button) => {
-    button.classList.toggle('is-active', button.dataset.lang === active);
+    const isActive = button.dataset.lang === active;
+    button.classList.toggle('is-active', isActive);
+    button.setAttribute('aria-pressed', String(isActive));
   });
   document.querySelectorAll('[data-whatsapp]').forEach((link) => {
     const messageKey = link.getAttribute('data-i18n-whatsapp');
-    const message =
-      messageKey && Object.prototype.hasOwnProperty.call(copy, messageKey) ? copy[messageKey] : copy.whatsappText;
-    link.href = `https://wa.me/77003330999?text=${encodeURIComponent(message)}`;
+    const message = messageKey && has(copy, messageKey) ? copy[messageKey] : copy.whatsappText;
+    link.href = whatsappUrl(message || '');
     link.setAttribute('target', '_blank');
     link.setAttribute('rel', 'noopener');
   });
-  if (!persist) return;
-  try {
-    localStorage.setItem(languageStorageKey, active);
-  } catch {
-    // The choice still applies for this visit when storage is blocked.
-  }
+  quoteForms.forEach((form) => form.refresh());
+  if (persist) saveLanguage(active);
+};
+
+// ------------------------------------------------------------- navigation
+const closeMobileMenu = () => {
+  mobileMenu?.classList.remove('is-open');
+  document.body.classList.remove('menu-open');
+  menuButton?.setAttribute('aria-expanded', 'false');
 };
 
 menuButton?.addEventListener('click', () => {
@@ -350,11 +134,33 @@ menuButton?.addEventListener('click', () => {
   menuButton.setAttribute('aria-expanded', String(isOpen));
 });
 
-mobileMenu?.querySelectorAll('a').forEach((link) => {
-  link.addEventListener('click', () => {
-    mobileMenu.classList.remove('is-open');
-    document.body.classList.remove('menu-open');
-    menuButton?.setAttribute('aria-expanded', 'false');
+mobileMenu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMobileMenu));
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && mobileMenu?.classList.contains('is-open')) {
+    closeMobileMenu();
+    menuButton?.focus();
+  }
+});
+
+document.querySelectorAll('[data-dropdown]').forEach((dropdown) => {
+  const button = dropdown.querySelector('[data-dropdown-button]');
+  const setOpen = (open) => {
+    dropdown.classList.toggle('is-open', open);
+    button.setAttribute('aria-expanded', String(open));
+  };
+  button.addEventListener('click', () => setOpen(!dropdown.classList.contains('is-open')));
+  document.addEventListener('click', (event) => {
+    if (!dropdown.contains(event.target)) setOpen(false);
+  });
+  dropdown.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      setOpen(false);
+      button.focus();
+    }
+  });
+  dropdown.addEventListener('focusout', (event) => {
+    if (!dropdown.contains(event.relatedTarget)) setOpen(false);
   });
 });
 
@@ -376,5 +182,307 @@ document.querySelectorAll('.section, .stats, .contact').forEach((node) => {
   observer.observe(node);
 });
 
-const savedLanguage = readSavedLanguage();
-setLanguage(savedLanguage || detectLanguage());
+// ------------------------------------------------------------- attribution (UTM / gclid)
+const attributionParams = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'yclid'];
+
+const captureAttribution = () => {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const found = {};
+    attributionParams.forEach((name) => {
+      const value = params.get(name);
+      if (value) found[name] = value.trim().slice(0, 150);
+    });
+    if (Object.keys(found).length) sessionStorage.setItem(attributionKey, JSON.stringify(found));
+  } catch {
+    // Attribution is optional.
+  }
+};
+
+const attributionTag = () => {
+  let data = {};
+  try {
+    data = JSON.parse(sessionStorage.getItem(attributionKey) || '{}') || {};
+  } catch {
+    data = {};
+  }
+  const path = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'].map((key) => data[key]).filter(Boolean);
+  const parts = [];
+  if (path.length) parts.push(path.join('/'));
+  if (data.gclid) parts.push(`gclid=${data.gclid}`);
+  if (data.yclid) parts.push(`yclid=${data.yclid}`);
+  return parts.length ? `ref: ${parts.join(' ')}` : '';
+};
+
+// ------------------------------------------------------------- quote form
+const normalizePhone = (raw) => {
+  const value = String(raw || '').trim();
+  if (/[a-zа-яё]/i.test(value)) return null;
+  const digits = value.replace(/\D/g, '');
+  let local = '';
+  if (/^8\d{10}$/.test(digits)) local = digits.slice(1);
+  else if (/^7\d{10}$/.test(digits)) local = digits.slice(1);
+  else if (/^7\d{9}$/.test(digits)) local = digits;
+  if (local) {
+    return `+7 ${local.slice(0, 3)} ${local.slice(3, 6)} ${local.slice(6, 8)} ${local.slice(8, 10)}`;
+  }
+  if (value.startsWith('+') && digits.length >= 10 && digits.length <= 15 && !digits.startsWith('7')) return `+${digits}`;
+  return null;
+};
+
+const positiveInteger = (value) => /^\d{1,7}$/.test(value) && Number(value) > 0;
+const nonNegativeInteger = (value) => /^\d{1,7}$/.test(value);
+
+const initQuoteForm = (form) => {
+  const steps = [...form.querySelectorAll('[data-step]')];
+  const progress = [...form.querySelectorAll('[data-progress]')];
+  const summary = form.querySelector('[data-error-summary]');
+  const done = form.querySelector('[data-quote-done]');
+  const doneLink = form.querySelector('[data-done-link]');
+  const requiredNote = form.querySelector('.quote-required-note');
+  let current = 1;
+  let lastUrl = '';
+
+  const copy = () => dictionary[activeLanguage] || {};
+  const checkedValue = (name) => form.querySelector(`input[name="${name}"]:checked`)?.value || '';
+  // A field counts when its conditional group is shown; the step itself may be hidden (e.g. on submit).
+  const isActiveField = (field) => !field.closest('[data-show-for][hidden], [data-hide-once][hidden]');
+
+  const updateConditional = () => {
+    const type = checkedValue('type');
+    const once = checkedValue('frequency') === 'once';
+    form.querySelectorAll('[data-show-for]').forEach((group) => {
+      group.hidden = !group.dataset.showFor.split(' ').includes(type);
+    });
+    form.querySelectorAll('[data-hide-once]').forEach((field) => {
+      field.hidden = once;
+    });
+    form.querySelectorAll('input, select, textarea').forEach((control) => {
+      const step = control.closest('[data-step]');
+      if (!step) return;
+      // Controls of hidden groups are disabled so they are skipped by validation and the message.
+      const groupHidden = [...form.querySelectorAll('[data-show-for], [data-hide-once]')].some(
+        (node) => node.hidden && node.contains(control)
+      );
+      control.disabled = groupHidden;
+    });
+  };
+
+  const setError = (field, key) => {
+    const error = field.querySelector('[data-error]');
+    field.classList.toggle('has-error', Boolean(key));
+    field.querySelectorAll('input, select, textarea').forEach((control) => {
+      if (key) control.setAttribute('aria-invalid', 'true');
+      else control.removeAttribute('aria-invalid');
+    });
+    if (!error) return;
+    if (key) {
+      error.dataset.errorKey = key;
+      error.textContent = copy()[key] || '';
+      error.hidden = false;
+    } else {
+      delete error.dataset.errorKey;
+      error.textContent = '';
+      error.hidden = true;
+    }
+  };
+
+  const validateField = (field) => {
+    const rule = field.dataset.required || '';
+    const control = field.querySelector('input:not([type="radio"]):not([type="checkbox"]), select, textarea');
+    const value = control ? control.value.trim() : '';
+    if (rule === 'choice') {
+      return field.querySelector('input:checked') ? '' : 'formErrChoose';
+    }
+    if (rule === 'select') return value ? '' : 'formErrChoose';
+    if (rule === 'phone') {
+      if (!value) return 'formErrRequired';
+      return normalizePhone(value) ? '' : 'formErrPhone';
+    }
+    if (rule === 'number') {
+      if (!value) return 'formErrRequired';
+      return positiveInteger(value) ? '' : 'formErrNumber';
+    }
+    if (rule === 'text') return value ? '' : 'formErrRequired';
+    if (field.dataset.kind === 'number' && value) return nonNegativeInteger(value) ? '' : 'formErrNumber';
+    return '';
+  };
+
+  const validateStep = (number) => {
+    const step = steps[number - 1];
+    let firstInvalid = null;
+    step.querySelectorAll('.field').forEach((field) => {
+      if (!isActiveField(field)) {
+        setError(field, '');
+        return;
+      }
+      const key = validateField(field);
+      setError(field, key);
+      if (key && !firstInvalid) firstInvalid = field;
+    });
+    summary.hidden = !firstInvalid;
+    if (firstInvalid) {
+      const control = firstInvalid.querySelector('input, select, textarea');
+      control?.focus();
+    }
+    return !firstInvalid;
+  };
+
+  const showStep = (number, { focus = true } = {}) => {
+    current = number;
+    steps.forEach((step, index) => {
+      step.hidden = index !== number - 1;
+    });
+    progress.forEach((item, index) => {
+      const position = index + 1;
+      item.classList.toggle('is-current', position === number);
+      item.classList.toggle('is-done', position < number);
+      if (position === number) item.setAttribute('aria-current', 'step');
+      else item.removeAttribute('aria-current');
+    });
+    summary.hidden = true;
+    if (focus) {
+      const heading = steps[number - 1].querySelector('.quote-step-title');
+      form.scrollIntoView({ block: 'start', behavior: 'smooth' });
+      heading?.focus({ preventScroll: true });
+    }
+  };
+
+  const readValue = (field) => {
+    const choices = [...field.querySelectorAll('input[type="radio"]:checked, input[type="checkbox"]:checked')];
+    if (choices.length) return choices.map((input) => input.closest('label').textContent.trim()).join(', ');
+    if (field.querySelector('input[type="radio"], input[type="checkbox"]')) return '';
+    const select = field.querySelector('select');
+    if (select) return select.value ? select.options[select.selectedIndex].textContent.trim() : '';
+    const control = field.querySelector('input, textarea');
+    if (!control) return '';
+    const value = control.value.trim().replace(/\s+/g, ' ');
+    if (field.dataset.required === 'phone') return normalizePhone(value) || value;
+    return value;
+  };
+
+  const composeMessage = () => {
+    const text = copy();
+    const lines = [text.msgIntro || 'Adal Works', ''];
+    form.querySelectorAll('.field').forEach((field) => {
+      if (!isActiveField(field) || field.closest('[data-quote-done]')) return;
+      const control = field.querySelector('input, select, textarea');
+      if (control && control.disabled) return;
+      const value = readValue(field);
+      if (!value) return;
+      const label = text[field.dataset.label] || field.dataset.field;
+      lines.push(`${label}: ${value}`);
+    });
+    lines.push('');
+    lines.push(`${text.msgPage || 'Page'}: adalworks.kz${window.location.pathname}`);
+    const tag = attributionTag();
+    if (tag) lines.push(tag);
+    return lines.join('\n');
+  };
+
+  // Hide the error summary once every highlighted field of the current step is fixed.
+  const syncSummary = () => {
+    if (!summary || summary.hidden) return;
+    if (!steps[current - 1]?.querySelector('.field.has-error')) summary.hidden = true;
+  };
+
+  const applyPreset = () => {
+    const preset = form.dataset.presetType;
+    if (!preset) return;
+    const input = form.querySelector(`input[name="type"][value="${preset}"]`);
+    if (input) input.checked = true;
+  };
+
+  form.addEventListener('change', (event) => {
+    if (event.target.name === 'type' || event.target.name === 'frequency') updateConditional();
+    const field = event.target.closest('.field');
+    if (field && field.classList.contains('has-error')) setError(field, validateField(field));
+    syncSummary();
+  });
+
+  form.addEventListener('input', (event) => {
+    const field = event.target.closest('.field');
+    if (field && field.classList.contains('has-error') && !validateField(field)) setError(field, '');
+    syncSummary();
+  });
+
+  form.querySelectorAll('[data-next]').forEach((button) => {
+    button.addEventListener('click', () => {
+      if (validateStep(current)) showStep(current + 1);
+    });
+  });
+
+  form.querySelectorAll('[data-back]').forEach((button) => {
+    button.addEventListener('click', () => showStep(current - 1));
+  });
+
+  form.addEventListener('keydown', (event) => {
+    // Enter in a text field moves to the next step instead of submitting early.
+    if (event.key === 'Enter' && event.target.tagName === 'INPUT' && current < steps.length) {
+      event.preventDefault();
+      if (validateStep(current)) showStep(current + 1);
+    }
+  });
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    if (current < steps.length) {
+      if (validateStep(current)) showStep(current + 1);
+      return;
+    }
+    if (!validateStep(current)) return;
+    lastUrl = whatsappUrl(composeMessage());
+    doneLink.href = lastUrl;
+    window.open(lastUrl, '_blank', 'noopener');
+    steps.forEach((step) => {
+      step.hidden = true;
+    });
+    progress.forEach((item) => {
+      item.classList.remove('is-current');
+      item.classList.add('is-done');
+      item.removeAttribute('aria-current');
+    });
+    if (requiredNote) requiredNote.style.display = 'none';
+    done.hidden = false;
+    done.focus();
+    form.dispatchEvent(new CustomEvent('quote:submitted', { bubbles: true, detail: { url: lastUrl } }));
+  });
+
+  form.querySelector('[data-restart]')?.addEventListener('click', () => {
+    form.reset();
+    applyPreset();
+    updateConditional();
+    form.querySelectorAll('.field').forEach((field) => setError(field, ''));
+    done.hidden = true;
+    if (requiredNote) requiredNote.style.display = '';
+    showStep(1);
+  });
+
+  applyPreset();
+  updateConditional();
+  showStep(1, { focus: false });
+
+  return {
+    refresh() {
+      form.querySelectorAll('[data-error]').forEach((error) => {
+        if (error.dataset.errorKey) error.textContent = copy()[error.dataset.errorKey] || '';
+      });
+    },
+    composeMessage,
+  };
+};
+
+// ------------------------------------------------------------- start
+captureAttribution();
+document.querySelectorAll('[data-quote-form]').forEach((form) => quoteForms.push(initQuoteForm(form)));
+
+const urlLanguage = (() => {
+  try {
+    return languageFromTag(new URLSearchParams(window.location.search).get('lang') || '');
+  } catch {
+    return '';
+  }
+})();
+
+if (urlLanguage) setLanguage(urlLanguage, { persist: true });
+else setLanguage(readSavedLanguage() || detectLanguage());
