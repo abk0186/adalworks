@@ -8,6 +8,7 @@ Texts live in _build/content.py (ru, kz, en) and _build/legacy-home.json
 (older home-page strings kept as they were). Jekyll skips folders that start
 with "_", so this folder is not published on GitHub Pages.
 """
+import hashlib
 import html
 import json
 import re
@@ -1283,6 +1284,22 @@ def write_i18n(p, html_text=""):
         fh.write(f"window.ADAL_I18N = {body};\n")
 
 
+# Cache busting: GitHub Pages serves every file with max-age=600 and browsers
+# (Samsung Internet especially) keep old copies longer, so a returning visitor
+# could get new HTML with an old styles.css / script.js / i18n file. Every local
+# CSS/JS reference gets ?v=<content hash>, which changes whenever the file does.
+ASSET_REF = re.compile(r'((?:href|src)=")(/(?:styles\.css|script\.js|i18n/[a-z0-9-]+\.js))(?:\?v=[0-9a-f]+)?(")')
+
+
+def asset_version(rel):
+    with open(os.path.join(ROOT, rel.lstrip("/")), "rb") as fh:
+        return hashlib.sha1(fh.read()).hexdigest()[:8]
+
+
+def stamp_assets(text):
+    return ASSET_REF.sub(lambda m: f"{m.group(1)}{m.group(2)}?v={asset_version(m.group(2))}{m.group(3)}", text)
+
+
 def write(path, text):
     full = os.path.join(ROOT, path)
     os.makedirs(os.path.dirname(full), exist_ok=True)
@@ -1291,19 +1308,25 @@ def write(path, text):
 
 
 def main():
+    pages = []  # (path, html); written after i18n/*.js so their hashes are final
     p, html_text = build_home()
-    write("index.html", html_text)
+    pages.append(("index.html", html_text))
     write_i18n(p, html_text)
     urls = [("/", "1.0")]
     for slug, nav_key, strings, image, preset in SERVICE_PAGES:
         sp, text = build_service(slug, nav_key, strings, image, preset)
-        write(f"{slug}/index.html", text)
+        pages.append((f"{slug}/index.html", text))
         write_i18n(sp, text)
         urls.append((f"/{slug}/", "0.8"))
     sp, text = build_smi()
-    write("smi/index.html", text)
+    pages.append(("smi/index.html", text))
     write_i18n(sp, text)
     urls.append(("/smi/", "0.6"))
+    for path, text in pages:
+        write(path, stamp_assets(text))
+    # 404.html is hand-written; refresh its asset versions in place
+    with open(os.path.join(ROOT, "404.html"), encoding="utf-8") as fh:
+        write("404.html", stamp_assets(fh.read()))
     sitemap = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for path, prio in urls:
         sitemap += ["  <url>", f"    <loc>{SITE}{path}</loc>", f"    <lastmod>{LASTMOD}</lastmod>",
