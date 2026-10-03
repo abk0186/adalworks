@@ -200,6 +200,7 @@ COMMON = {
     "footerServices": ("Услуги", "Қызметтер", "Services"),
     "footerCompany": ("Компания", "Компания", "Company"),
     "footerContacts": ("Контакты", "Байланыс", "Contact"),
+    "navPress": ("СМИ о нас", "БАҚ біз туралы", "Press"),
     "whatsappText": (
         "Здравствуйте, Adal Works! Хочу обсудить клининг для объекта.",
         "Сәлеметсіз бе, Adal Works! Нысанға клининг қызметін талқылағым келеді.",
@@ -492,6 +493,12 @@ HOME = {
         "Иә. Оқытуға дейін қызметкерлерді тестілеп, олардың білім деңгейіне сай бағдарлама құрамыз. Қазақ және орыс тілдерінде тұрақты тренингтер мен сертификаттау өткіземіз, сондай-ақ басқа командаларға клининг бойынша оқыту мен аудит жүргіземіз.",
         "Yes. Before training we test employees and build the programme around their level of knowledge. We run regular training and certification in Kazakh and Russian, and also provide cleaning training and audits for other teams.",
     ),
+    # replaces the former staff and site counters (Asset, 03.10.2026: no numbers of people or sites)
+    "statSpecialization": (
+        "Специализация — коммерческий клининг и клининг жилых комплексов. Большой опыт.",
+        "Мамандануымыз — коммерциялық клининг және тұрғын үй кешендерінің клинингі. Тәжірибеміз мол.",
+        "Specialization: commercial cleaning and cleaning of residential complexes. Extensive experience.",
+    ),
     "trainingMethodTitle": ("Как мы строим обучение", "Оқытуды қалай құрамыз", "How we build training"),
     "trainingMethod": (
         "Перед обучением тестируем сотрудников и определяем уровень знаний — под него составляем программу обучения. Проводим анонимный опрос лояльности и вовлечённости персонала: сотрудники честно говорят, что мешает работать, а руководство видит реальную картину.",
@@ -777,4 +784,131 @@ TERRITORY = {
         "Иә. Іргелес аумаққа жыл бойы қызмет көрсетеміз: қыста қар, жазда жасыл желек.",
         "Yes. We maintain adjacent grounds all year round: snow in winter, green areas in summer.",
     ),
+}
+
+
+# ------------------------------------------------------------------ press («СМИ о нас»)
+# Source: /workspace/adalworks-ads/press/press-plan.md (03.10.2026). Quotes in the original language are
+# verbatim; the other languages are marked as translations. Headlines stay in the original language.
+PRESS = {
+    "pressTag": ("СМИ о нас", "БАҚ біз туралы", "Press"),
+    "pressTitle": ("О нас пишут и снимают", "Біз туралы жазады және түсіреді", "Adal Works in the press"),
+    "pressLead": (
+        "Интервью с основателем Adal Works Асетом Бегалиевым в казахстанских СМИ и на телевидении.",
+        "Adal Works негізін қалаушы Әсет Бегалиевпен Қазақстан БАҚ-тары мен теледидардағы сұхбаттар.",
+        "Interviews with Adal Works founder Asset Begaliyev in Kazakhstan's media and on TV.",
+    ),
+    "pressRead": ("Читать", "Оқу", "Read"),
+    "pressWatch": ("Смотреть", "Көру", "Watch"),
+    "pressAll": ("Все материалы", "Барлық материалдар", "All press coverage"),
+    "pressFmtArticle": ("Статья", "Мақала", "Article"),
+    "pressFmtInterview": ("Интервью", "Сұхбат", "Interview"),
+    "pressFmtTv": ("ТВ-сюжет", "Телесюжет", "TV feature"),
+    "pressFmtVideo": ("Видео", "Бейне", "Video"),
+    # language badge next to a headline: empty when the headline is in the page language
+    "pressLangRu": ("", "орыс тілінде", "in Russian"),
+    "pressLangKz": ("на казахском", "", "in Kazakh"),
+    "pressNewTab": ("откроется в новой вкладке", "жаңа бетте ашылады", "opens in a new tab"),
+    "pressOutletVillage": ("The Village Казахстан", "The Village Қазақстан", "The Village Kazakhstan"),
+    # quotes: Russian originals are verbatim; KZ/EN are translations (marked in the cite line)
+    "pressCiteFromRu": ("Асет Бегалиев", "Әсет Бегалиев · аударма", "Asset Begaliyev · translated from Russian"),
+    "pressCiteFromKz": ("Асет Бегалиев · перевод с казахского", "Әсет Бегалиев", "Asset Begaliyev · translated from Kazakh"),
+    "pressQuoteMybusiness": (
+        "Моя главная задача заключается в том, чтобы построить глобальный бизнес, управляемый из Казахстана.",
+        "Менің басты міндетім — Қазақстаннан басқарылатын жаһандық бизнес құру.",
+        "My main goal is to build a global business managed from Kazakhstan.",
+    ),
+    "pressQuoteVillage": (
+        "Когда ты выбираешь необычное и немодное направление бизнеса, не надо изобретать велосипед, надо просто постоянно крутить педали.",
+        "Бизнестің ерекше әрі сәнді емес бағытын таңдағанда велосипедті қайта ойлап табудың қажеті жоқ, тек педальды үнемі айналдыра беру керек.",
+        "When you choose an unusual, unfashionable line of business, you don't need to reinvent the wheel, you just need to keep pedalling.",
+    ),
+    "pressQuoteInbusiness": (
+        "Самое главное – это отбросить стереотипы. Это мешает видеть перспективы.",
+        "Ең бастысы — стереотиптерден арылу. Олар болашақты көруге кедергі келтіреді.",
+        "The most important thing is to drop stereotypes. They stop you from seeing the opportunities.",
+    ),
+    "pressQuoteEgemen": (
+        "Учитывая эти особенности и пожелания граждан, мы стремимся внести свой вклад в развитие отрасли.",
+        "Осы ерекшеліктерді, азаматтардың қалауын ескере отырып, саланың дамуына үлес қосу жолындамыз",
+        "Taking these specifics and people's wishes into account, we are working to contribute to the development of the industry.",
+    ),
+    # short summaries for /smi/ (facts from the plan only, no old revenue or staff figures)
+    "pressSumMybusiness": (
+        "Как Асет оставил престижную должность ради уборки подъездов и как устроена работа Adal Works.",
+        "Әсет беделді қызметін кіреберістерді тазалау үшін қалай тастағаны және Adal Works жұмысы қалай құрылғаны туралы.",
+        "How Asset left a prestigious job to clean apartment-block entrances, and how Adal Works operates.",
+    ),
+    "pressSumEgemen": (
+        "Обзор рынка клининга в Казахстане. Adal Works — одна из трёх компаний в статье; Асет говорит о появлении ОСИ и ожиданиях жильцов.",
+        "Қазақстандағы клининг нарығына шолу. Adal Works — мақаладағы үш компанияның бірі; Әсет МИБ-тердің пайда болуы және тұрғындардың күтуі туралы айтады.",
+        "An overview of Kazakhstan's cleaning market. Adal Works is one of three companies featured; Asset talks about the arrival of homeowners' associations (OSI) and residents' expectations.",
+    ),
+    "pressSum24kz": (
+        "Выпуск программы NEXT телеканала 24KZ об Асете Бегалиеве как основателе бизнеса в сфере клининга и ЖКХ.",
+        "24KZ телеарнасының NEXT бағдарламасы: клининг және ТКШ саласындағы бизнестің негізін қалаушы Әсет Бегалиев туралы шығарылым.",
+        "An episode of the NEXT programme on 24KZ about Asset Begaliyev as the founder of a cleaning and housing-services business.",
+    ),
+    "pressSumVillage": (
+        "Почти через год после запуска: первый объект, работа с жильцами через WhatsApp-чаты и соцсети.",
+        "Іске қосылғаннан кейін бір жылдай өткенде: алғашқы нысан, тұрғындармен WhatsApp-чаттар мен әлеуметтік желілер арқылы жұмыс.",
+        "Almost a year after launch: the first site, and working with residents through WhatsApp chats and social media.",
+    ),
+    "pressSumInbusiness": (
+        "Самое раннее интервью, через три месяца после старта: уход с руководящей должности, первый объект и как сделать подъезд чище.",
+        "Іске кіріскеннен кейін үш айдан соңғы ең алғашқы сұхбат: басшылық қызметтен кету, алғашқы нысан және кіреберісті қалай тазарақ ұстау керек.",
+        "The earliest interview, three months after the start: leaving a senior role, the first site and how to keep an entrance cleaner.",
+    ),
+    "pressSumYoutube": (
+        "Разговор о клининговом бизнесе и о грубости жильцов на YouTube-канале Chingiz Dauletbayev.",
+        "Chingiz Dauletbayev YouTube-арнасында клининг бизнесі және тұрғындардың дөрекілігі туралы әңгіме.",
+        "A conversation about the cleaning business and rude residents on the Chingiz Dauletbayev YouTube channel.",
+    ),
+    "press24kzImgAlt": (
+        "Асет Бегалиев в сюжете программы NEXT на 24KZ",
+        "Әсет Бегалиев 24KZ арнасының NEXT бағдарламасындағы сюжетте",
+        "Asset Begaliyev in the NEXT programme on 24KZ",
+    ),
+    "pressYoutubeImgAlt": (
+        "Превью видео на YouTube-канале Chingiz Dauletbayev",
+        "Chingiz Dauletbayev YouTube-арнасындағы бейненің мұқабасы",
+        "Video thumbnail from the Chingiz Dauletbayev YouTube channel",
+    ),
+}
+
+SMI = {
+    "pageTitle": (
+        "СМИ об Adal Works: интервью и публикации | Adal Works",
+        "Adal Works туралы БАҚ: сұхбаттар мен жарияланымдар | Adal Works",
+        "Adal Works in the press: interviews and publications | Adal Works",
+    ),
+    "pageDescription": (
+        "Публикации и интервью об Adal Works и её основателе Асете Бегалиеве: 24KZ, MyBusiness.kz, The Village Казахстан, Inbusiness.kz.",
+        "Adal Works және оның негізін қалаушы Әсет Бегалиев туралы жарияланымдар мен сұхбаттар: 24KZ, MyBusiness.kz, The Village Қазақстан, Inbusiness.kz, Egemen Qazaqstan.",
+        "Publications and interviews about Adal Works and its founder Asset Begaliyev: 24KZ, MyBusiness.kz, The Village Kazakhstan, Inbusiness.kz.",
+    ),
+    "schemaDescription": (
+        "Публикации и интервью об Adal Works и её основателе Асете Бегалиеве в казахстанских СМИ.",
+        "Қазақстан БАҚ-тарындағы Adal Works және оның негізін қалаушы Әсет Бегалиев туралы жарияланымдар мен сұхбаттар.",
+        "Publications and interviews about Adal Works and its founder Asset Begaliyev in Kazakhstan's media.",
+    ),
+    "founderTag": ("Основатель", "Негізін қалаушы", "Founder"),
+    "founderName": ("Асет Бегалиев", "Әсет Бегалиев", "Asset Begaliyev"),
+    "founderRole": ("Основатель Adal Works", "Adal Works негізін қалаушы", "Founder of Adal Works"),
+    "founderBio1": (
+        "Асет Бегалиев основал Adal Works в 2018 году. Окончил КИМЭП, начинал карьеру аудитором в Deloitte, затем работал в АО «Фонд недвижимости Самрук-Казына». По программе «Болашак» получил степень магистра по управлению проектами в University of Manchester.",
+        "Әсет Бегалиев Adal Works компаниясын 2018 жылы құрды. КИМЭП-ті бітірген, мансабын Deloitte компаниясында аудитор болып бастады, кейін «Самұрық-Қазына» жылжымайтын мүлік қоры» АҚ-да жұмыс істеді. «Болашақ» бағдарламасы бойынша University of Manchester-де жобаларды басқару бойынша магистр дәрежесін алды.",
+        "Asset Begaliyev founded Adal Works in 2018. A KIMEP graduate, he started his career as an auditor at Deloitte and then worked at Samruk-Kazyna Real Estate Fund. Under the Bolashak programme he earned a master's degree in project management from the University of Manchester.",
+    ),
+    "founderBio2": (
+        "Работал в горнорудном секторе, был генеральным директором «Астана-ЕРЦ» и заместителем председателя по финансам АО «Астана-Энергия». В ноябре 2018 года ушёл с руководящей должности, чтобы заниматься Adal Works.",
+        "Тау-кен саласында жұмыс істеді, «Астана-ЕРЦ» бас директоры, «Астана-Энергия» АҚ төрағасының қаржы жөніндегі орынбасары болды. 2018 жылғы қарашада Adal Works-пен айналысу үшін басшылық қызметтен кетті.",
+        "He worked in the mining sector, was general director of Astana-ERC and deputy chairman for finance at Astana-Energy. In November 2018 he left that senior role to focus on Adal Works.",
+    ),
+    "founderImgAlt": (
+        "Асет Бегалиев, основатель Adal Works. Кадр из сюжета 24KZ",
+        "Әсет Бегалиев, Adal Works негізін қалаушы. 24KZ сюжетінен кадр",
+        "Asset Begaliyev, founder of Adal Works. Still from the 24KZ feature",
+    ),
+    "smiListTitle": ("Публикации и видео", "Жарияланымдар мен бейнелер", "Articles and videos"),
 }

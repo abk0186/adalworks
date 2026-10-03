@@ -41,6 +41,47 @@ SERVICE_PAGES = [
     ("aula", "navTerritory", C.TERRITORY, ("team-portrait", "jpg", 629, 666), "territory"),
 ]
 
+# Press materials («СМИ о нас»). Verified data only: /workspace/adalworks-ads/press/press-plan.md (03.10.2026).
+# Headlines stay in the original language; "home" marks the four cards shown on the home page (in this order).
+MONTHS_EN = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+PRESS_ITEMS = [
+    {"id": "egemen", "outlet": "Egemen Qazaqstan", "url": "https://egemen.kz/news/article273289-kliningtik-qyzmet-tabysty-biznes",
+     "title": "Клинингтік қызмет – табысты бизнес", "lang": "kk", "date": "2021-04-30", "fmt": "pressFmtArticle",
+     "quote": "pressQuoteEgemen", "cite": "pressCiteFromKz", "sum": "pressSumEgemen", "author": "Абай Аймағамбет",
+     "type": "NewsArticle"},
+    {"id": "mybusiness", "outlet": "MyBusiness.kz", "url": "https://mybusiness.kz/lyudidela/aset_begaliev_ya_xocu_stroit_globalnyi_biznes_upravlyaemyi_iz_kazaxstana/371",
+     "title": "Асет Бегалиев: Я хочу строить глобальный бизнес, управляемый из Казахстана", "lang": "ru", "date": "2021-04-28",
+     "fmt": "pressFmtInterview", "quote": "pressQuoteMybusiness", "cite": "pressCiteFromRu", "sum": "pressSumMybusiness",
+     "author": "Сабина Мустафина", "type": "NewsArticle", "home": 1},
+    {"id": "24kz", "outlet": "24KZ", "program": "NEXT", "url": "https://24.kz/ru/tv-projects/novoe-pokolenie/411630-osnovatel-biznesa-v-sfere-klininga-i-zhkkh-aset-begaliev-next",
+     "title": "Основатель бизнеса в сфере клининга и ЖКХ Асет Бегалиев", "full_title": "Основатель бизнеса в сфере клининга и ЖКХ Асет Бегалиев | NEXT",
+     "lang": "ru", "date": "2020-07-24", "fmt": "pressFmtTv", "sum": "pressSum24kz", "video": True, "type": "VideoObject",
+     "image": ("press-24kz-next", 800, 450, "press24kzImgAlt"), "upload": "2020-07-24T18:00:27+05:00",
+     "embed": "https://www.youtube.com/embed/7g1JLpKqVeY", "home": 2},
+    {"id": "village", "outlet": "The Village Казахстан", "outlet_key": "pressOutletVillage",
+     "url": "https://village.com.kz/village/business/businessmen/7189-kak-postroit-sovremennyy-biznes-na-uborke-pod-ezdov",
+     "title": "Асет Бегалиев — о том, как открыть клининг-бизнес и выйти на месячный оборот в 11 миллионов тенге", "lang": "ru",
+     "date": "2019-09-03", "fmt": "pressFmtArticle", "quote": "pressQuoteVillage", "cite": "pressCiteFromRu", "sum": "pressSumVillage",
+     "author": "Илона Соколова", "type": "NewsArticle", "home": 3},
+    {"id": "inbusiness", "outlet": "Inbusiness.kz", "url": "https://www.inbusiness.kz/ru/news/aset-begaliev-v-biznese-nuzhno-otbrosit-stereotipy",
+     "title": "Асет Бегалиев: «В бизнесе нужно отбросить стереотипы»", "lang": "ru", "date": "2019-01-18", "fmt": "pressFmtInterview",
+     "quote": "pressQuoteInbusiness", "cite": "pressCiteFromRu", "sum": "pressSumInbusiness", "author": "Айгуль Тулекбаева",
+     "type": "NewsArticle", "home": 4},
+    # date unknown (YouTube blocked the lookup): no date shown and no VideoObject in schema (uploadDate is required)
+    {"id": "youtube", "outlet": "YouTube · Chingiz Dauletbayev", "url": "https://youtu.be/bv2maQQOrPU",
+     "title": "Почему в Африке чище чем в Казахстане | Асет Бегалиев о клининговом бизнесе и грубости жильцов", "lang": "ru",
+     "fmt": "pressFmtVideo", "sum": "pressSumYoutube", "video": True, "image": ("press-youtube-dauletbayev", 480, 270, "pressYoutubeImgAlt")},
+]
+
+
+def press_dates():
+    out = {}
+    for it in PRESS_ITEMS:
+        if it.get("date"):
+            y, m, d = it["date"].split("-")
+            out[f"pressDate_{it['id']}"] = (f"{d}.{m}.{y}", f"{d}.{m}.{y}", f"{int(d)} {MONTHS_EN[int(m) - 1]} {y}")
+    return out
+
 
 def esc(text):
     return html.escape(text, quote=False)
@@ -66,7 +107,9 @@ class Page:
 
     def t(self, key, tag="span", cls="", extra=""):
         c = f' class="{cls}"' if cls else ""
-        return f'<{tag}{c}{extra} data-i18n="{key}">{esc(self.s(key))}</{tag}>'
+        text = self.s(key)
+        hidden = "" if text else " hidden"
+        return f'<{tag}{c}{extra} data-i18n="{key}"{hidden}>{esc(text)}</{tag}>'
 
     def use(self, *keys):
         for k in keys:
@@ -514,6 +557,7 @@ def footer(p):
         <a href="{p.href('quote')}" data-i18n="navQuote">{esc(p.s('navQuote'))}</a>
         <a href="{p.href('training-audit')}" data-i18n="navTraining">{esc(p.s('navTraining'))}</a>
         <a href="{p.href('about')}" data-i18n="navAbout">{esc(p.s('navAbout'))}</a>
+        <a href="/smi/"{' aria-current="page"' if p.slug == 'smi' else ''} data-i18n="navPress">{esc(p.s('navPress'))}</a>
       </nav>
       <div class="footer-col">
         {p.t('footerContacts', 'strong')}
@@ -586,6 +630,33 @@ def tail(p):
 """
 
 
+FOUNDER = {
+    "@type": "Person",
+    "name": "Асет Бегалиев",
+    "alternateName": ["Asset Begaliyev", "Әсет Бегалиев"],
+    "jobTitle": "Основатель",
+    "image": f"{SITE}/assets/founder-aset-begaliev.jpg",
+    "alumniOf": [
+        {"@type": "CollegeOrUniversity", "name": "KIMEP University"},
+        {"@type": "CollegeOrUniversity", "name": "The University of Manchester"},
+    ],
+}
+
+
+def press_schema(it):
+    if it["type"] == "VideoObject":
+        name, w, h, _alt = it["image"]
+        return {"@type": "VideoObject", "name": it.get("full_title", it["title"]), "url": it["url"], "uploadDate": it["upload"],
+                "thumbnailUrl": f"{SITE}/assets/{name}.jpg", "embedUrl": it["embed"], "inLanguage": it["lang"],
+                "description": C.PRESS[it["sum"]][0], "publisher": {"@type": "Organization", "name": it["outlet"]}}
+    return {"@type": "NewsArticle", "headline": it["title"], "url": it["url"], "datePublished": it["date"], "inLanguage": it["lang"],
+            "author": {"@type": "Person", "name": it["author"]}, "publisher": {"@type": "Organization", "name": it["outlet"]}}
+
+
+def press_subjects():
+    return [press_schema(it) for it in PRESS_ITEMS if it.get("type")]
+
+
 BUSINESS = {
     "@type": "LocalBusiness",
     "additionalType": "https://schema.org/CleaningService",
@@ -605,7 +676,9 @@ def home_schema(p):
         "image": f"{SITE}/assets/og-image.jpg",
         "logo": f"{SITE}/assets/logo.png",
         "areaServed": {"@type": "City", "name": "Astana"},
-        "foundingDate": "2018",
+        "foundingDate": "2018-10-15",
+        "founder": FOUNDER,
+        "subjectOf": press_subjects(),
         "openingHours": "Mo-Su 08:00-22:00",
         "openingHoursSpecification": {
             "@type": "OpeningHoursSpecification",
@@ -634,9 +707,9 @@ def home_schema(p):
 
 # ---------------------------------------------------------------- home
 def build_home():
-    strings = {**LEGACY, **C.COMMON, **C.FORM, **C.HOME}
+    strings = {**LEGACY, **C.COMMON, **C.FORM, **C.HOME, **C.PRESS, **press_dates()}
     ids = ["services", "full-cycle", "how-we-work", "formats", "territory", "parking", "pricing", "training-audit",
-           "works", "facilities", "about", "faq", "quote", "contact"]
+           "works", "facilities", "about", "press", "faq", "quote", "contact"]
     p = Page("home", "/", "kz", strings, ids)
     out = [head(p, "pageTitle", "pageDescription", f"{SITE}/", home_schema(p), "hero-machine")]
     out.append(header(p))
@@ -666,18 +739,12 @@ def build_home():
             <source srcset="/assets/hero-machine.webp" type="image/webp" />
             <img src="/assets/hero-machine.jpg" alt="Adal Works қызметкері еден жуу машинасымен" width="1707" height="1280" fetchpriority="high" />
           </picture>
-          <div class="hero-panel">
-            {p.t('heroPanelTop')}
-            <strong>21</strong>
-            {p.t('heroPanelBottom')}
-          </div>
         </div>
       </section>
 
-      <section class="stats" aria-label="Adal Works">
+      <section class="stats is-quality" aria-label="Adal Works">
         <div><strong data-i18n="statYearsFigure"{' hidden' if not p.s('statYearsFigure') else ''}>{esc(p.s('statYearsFigure'))}</strong>{p.t('statYears')}</div>
-        <div><strong>80</strong>{p.t('statStaff')}</div>
-        <div><strong data-i18n="statFacilitiesFigure"{' hidden' if not p.s('statFacilitiesFigure') else ''}>{esc(p.s('statFacilitiesFigure'))}</strong>{p.t('statFacilities')}</div>
+        <div class="stats-quality">{p.t('statSpecialization', 'p')}</div>
       </section>
 """
     out.append(hero)
@@ -794,7 +861,7 @@ def build_home():
       </section>
 """)
     # legacy sections: training/audit, works, facilities, about, certificates (copied markup, absolute asset paths)
-    out.append(legacy_sections(p))
+    out.append(legacy_sections(p, press_home(p)))
     out.append(faq(p, [("faqPriceQ", "faqPriceA"), ("qFreeQ", "qFreeA"), ("qPayQ", "qPayA"), ("qFormatsQ", "qFormatsA"),
                        ("faqOsiQ", "faqOsiA"), ("faqOneQ", "faqOneA"), ("qSnowQ", "qSnowA"), ("qParkingQ", "qParkingA"),
                        ("faqTrainingQ", "faqTrainingA")]))
@@ -821,7 +888,60 @@ def marquee(items, cls, track_cls, label, size):
         </div>"""
 
 
-def legacy_sections(p):
+def press_card(p, it, full=False):
+    pid = it["id"]
+    outlet = p.t(it["outlet_key"], "span", "press-outlet") if it.get("outlet_key") else f'<span class="press-outlet">{esc(it["outlet"])}</span>'
+    if it.get("program"):
+        outlet += f' <span class="press-program">{esc(it["program"])}</span>'
+    if it.get("image"):
+        name, w, h, alt_key = it["image"]
+        media = f'<div class="press-media">{picture(name, "jpg", w, h, alt_key, p, chr(32) + "loading=" + chr(34) + "lazy" + chr(34) + " decoding=" + chr(34) + "async" + chr(34))}</div>'
+    else:
+        mark = esc(p.s(it["outlet_key"])) if it.get("outlet_key") else esc(it["outlet"])
+        mark_attr = f' data-i18n="{it["outlet_key"]}"' if it.get("outlet_key") else ""
+        media = f'<div class="press-media press-mark press-mark-{pid}" aria-hidden="true"><span{mark_attr}>{mark}</span></div>'
+    bits = [outlet, p.t(it["fmt"], "span", "press-fmt")]
+    if it.get("date"):
+        bits.append(f'<time datetime="{it["date"]}" data-i18n="pressDate_{pid}">{esc(p.s("pressDate_" + pid))}</time>')
+    meta = '<span class="press-dot" aria-hidden="true">·</span>'.join(bits)
+    badge_key = "pressLangKz" if it["lang"] == "kk" else "pressLangRu"
+    title = (f'<h3 class="press-title" id="press-title-{pid}"><span lang="{it["lang"]}">{esc(it["title"])}</span> '
+             f'{p.t(badge_key, "span", "press-lang")}</h3>')
+    quote = ""
+    if it.get("quote"):
+        quote = (f'\n            <blockquote class="press-quote">{p.t(it["quote"], "p")}'
+                 f'<footer>{p.t(it["cite"], "cite")}</footer></blockquote>')
+    summary = f'\n            {p.t(it["sum"], "p", "press-sum")}' if full else ""
+    btn = "pressWatch" if it.get("video") else "pressRead"
+    return f"""          <article class="press-card{' has-image' if it.get('image') else ''}">
+            {media}
+            <div class="press-body">
+            <p class="press-meta">{meta}</p>
+            {title}{summary}{quote}
+            <a class="button secondary press-link" href="{it['url']}" target="_blank" rel="noopener" aria-describedby="press-title-{pid}">{p.t(btn)}<span class="visually-hidden"> ({p.t('pressNewTab')})</span></a>
+            </div>
+          </article>"""
+
+
+def press_home(p):
+    items = sorted((it for it in PRESS_ITEMS if it.get("home")), key=lambda it: it["home"])
+    cards = "\n".join(press_card(p, it) for it in items)
+    return f"""
+      <section class="section press" id="press">
+        <div class="section-heading">
+          {p.t('pressTag', 'p', 'eyebrow')}
+          {p.t('pressTitle', 'h2')}
+          {p.t('pressLead', 'p')}
+        </div>
+        <div class="press-grid">
+{cards}
+        </div>
+        <a class="text-link press-all" href="/smi/"><span data-i18n="pressAll">{esc(p.s('pressAll'))}</span> <span aria-hidden="true">→</span></a>
+      </section>
+"""
+
+
+def legacy_sections(p, press_html=""):
     def li(key):
         return p.t(key, "li")
     work = marquee([("work-wide", "jpg", "Коммерциялық нысанды тазалау"), ("work-vertical-1", "jpg", "Клининг жұмыс процесі"),
@@ -912,7 +1032,7 @@ def legacy_sections(p):
           </div>
         </div>
       </section>
-
+{press_html}
       <section class="section certificates">
         <div class="section-heading compact">
           {p.t('certTag', 'p', 'eyebrow')}
@@ -1067,6 +1187,86 @@ def build_service(slug, nav_key, page_strings, image, preset):
     return p, "".join(out)
 
 
+def build_smi():
+    strings = {**C.COMMON, **C.FORM, **C.PRESS, **press_dates(), **C.SMI}
+    p = Page("smi", "/smi/", "ru", strings, ["founder", "materials", "contact"])
+    canonical = f"{SITE}/smi/"
+    items = []
+    for n, it in enumerate(PRESS_ITEMS, 1):
+        entry = {"@type": "ListItem", "position": n, "url": it["url"], "name": it["title"]}
+        if it.get("type"):
+            entry = {"@type": "ListItem", "position": n, "item": press_schema(it)}
+        items.append(entry)
+    collection = {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": C.SMI["pageTitle"][0],
+        "description": C.SMI["schemaDescription"][0],
+        "url": canonical,
+        "inLanguage": "ru",
+        "about": {**BUSINESS, "founder": FOUNDER},
+        "mainEntity": {"@type": "ItemList", "numberOfItems": len(items), "itemListElement": items},
+    }
+    crumbs = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Adal Works", "item": f"{SITE}/"},
+            {"@type": "ListItem", "position": 2, "name": C.PRESS["pressTag"][0], "item": canonical},
+        ],
+    }
+    out = [head(p, "pageTitle", "pageDescription", canonical, [collection, crumbs], "founder-aset-begaliev")]
+    out.append(header(p))
+    cards = "\n".join(press_card(p, it, full=True) for it in PRESS_ITEMS)
+    out.append(f"""
+    <main id="top" class="service-page press-page">
+      <section class="hero page-hero press-hero">
+        <div class="hero-copy">
+          <nav class="breadcrumbs" aria-label="{attr(p.s('crumbAria'))}" data-i18n-aria="crumbAria">
+            <ol>
+              <li><a href="/" data-i18n="crumbHome">{esc(p.s('crumbHome'))}</a></li>
+              <li aria-current="page" data-i18n="navPress">{esc(p.s('navPress'))}</li>
+            </ol>
+          </nav>
+          {p.t('pressTag', 'p', 'eyebrow')}
+          {p.t('pressTitle', 'h1')}
+          {p.t('pressLead', 'p', 'lead')}
+        </div>
+        <div class="hero-media">
+          {picture('founder-aset-begaliev', 'jpg', 600, 720, 'founderImgAlt', p, ' fetchpriority="high"')}
+          <div class="hero-panel is-caption">
+            {p.t('founderName', 'strong')}
+            {p.t('founderRole')}
+          </div>
+        </div>
+      </section>
+
+      <section class="section founder" id="founder">
+        <div class="section-heading">
+          {p.t('founderTag', 'p', 'eyebrow')}
+          {p.t('founderName', 'h2')}
+          {p.t('founderBio1', 'p')}
+          {p.t('founderBio2', 'p')}
+        </div>
+      </section>
+
+      <section class="section press press-all-list" id="materials">
+        <div class="section-heading">
+          {p.t('smiListTitle', 'h2')}
+        </div>
+        <div class="press-grid is-full">
+{cards}
+        </div>
+      </section>
+
+""")
+    out.append(contact(p))
+    out.append("    </main>\n\n")
+    out.append(footer(p))
+    out.append(tail(p))
+    return p, "".join(out)
+
+
 def write_i18n(p, html_text=""):
     # keys referenced only through attributes (e.g. data-i18n-whatsapp) also need exporting
     for key in re.findall(r'data-i18n-whatsapp="([^"]+)"', html_text):
@@ -1100,6 +1300,10 @@ def main():
         write(f"{slug}/index.html", text)
         write_i18n(sp, text)
         urls.append((f"/{slug}/", "0.8"))
+    sp, text = build_smi()
+    write("smi/index.html", text)
+    write_i18n(sp, text)
+    urls.append(("/smi/", "0.6"))
     sitemap = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for path, prio in urls:
         sitemap += ["  <url>", f"    <loc>{SITE}{path}</loc>", f"    <lastmod>{LASTMOD}</lastmod>",
