@@ -2288,8 +2288,131 @@ section[id],
   }
 }
 
-@media (max-width: 380px) {
-  .quote-progress li span:not(.quote-progress-num) {
+/* ---------- v3: edits from Asset ---------- */
+.stats {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.training-method {
+  margin: 0 0 16px;
+  padding: 22px 26px;
+  border: 1px solid rgba(31, 111, 255, 0.22);
+  border-left: 4px solid var(--green);
+  border-radius: var(--radius);
+  background: rgba(232, 240, 255, 0.7);
+}
+
+.training-method h3 {
+  margin: 0 0 8px;
+  font-size: 19px;
+}
+
+.training-method p {
+  margin: 0;
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.price-factors .price-std,
+.form-std-text {
+  margin: 14px 0 0;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: rgba(232, 240, 255, 0.8);
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.form-std-text {
+  margin: 0;
+}
+
+.parking-media img {
+  object-position: 50% 12%;
+}
+
+@media (max-width: 640px) {
+  .stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .stats div {
+    min-height: 0;
+    padding: 16px 12px;
+  }
+
+  .stats strong {
+    font-size: 30px;
+  }
+
+  .stats span {
+    font-size: 13px;
+  }
+
+  .parking-media img {
+    height: auto;
+    aspect-ratio: 393 / 516;
+    max-height: 560px;
+    object-position: 50% 0;
+  }
+
+  .training-method {
+    padding: 18px;
+  }
+}
+
+/* v3: keep faces in frame when photos are cropped with object-fit: cover */
+img[src*="work-wide"] {
+  object-position: 18% 0;
+}
+
+img[src*="work-vertical-1"] {
+  object-position: 50% 10%;
+}
+
+img[src*="work-vertical-2"] {
+  object-position: 50% 0;
+}
+
+img[src*="hero-team"],
+img[src*="team-office"] {
+  object-position: 50% 30%;
+}
+
+/* v3: long Russian/Kazakh words in headings must not overflow narrow screens */
+h1,
+h2,
+h3 {
+  overflow-wrap: break-word;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+@media (max-width: 640px) {
+  h2 {
+    font-size: clamp(27px, 8.2vw, 40px);
+  }
+}
+
+/* v3: on narrow phones the form progress shows the label of the current step only */
+@media (max-width: 430px) {
+  .quote-progress {
+    display: flex;
+    gap: 6px;
+  }
+
+  .quote-progress li {
+    flex: 0 0 auto;
+    justify-content: center;
+  }
+
+  .quote-progress li.is-current {
+    flex: 1 1 auto;
+  }
+
+  .quote-progress li:not(.is-current) > span:not(.quote-progress-num) {
     position: absolute;
     width: 1px;
     height: 1px;

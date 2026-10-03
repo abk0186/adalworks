@@ -349,6 +349,8 @@ const initQuoteForm = (form) => {
   };
 
   const readValue = (field) => {
+    // Informational blocks (e.g. the standard residential format) add a fixed line to the message.
+    if (field.dataset.static) return copy()[field.dataset.static] || '';
     const choices = [...field.querySelectorAll('input[type="radio"]:checked, input[type="checkbox"]:checked')];
     if (choices.length) return choices.map((input) => input.closest('label').textContent.trim()).join(', ');
     if (field.querySelector('input[type="radio"], input[type="checkbox"]')) return '';
