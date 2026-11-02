@@ -29,7 +29,7 @@ PHONE = "+77003330999"
 PHONE_TEXT = "+7 700 333 0 999"
 WA = "https://wa.me/77003330999"
 EMAIL = "adalworks.ads@gmail.com"
-LASTMOD = "2026-10-03"
+LASTMOD = "2026-11-02"
 
 legacy = json.load(open(os.path.join(HERE, "legacy-home.json"), encoding="utf-8"))
 LEGACY = {k: (legacy["ru"][k], legacy["kz"][k], legacy["en"][k]) for k in legacy["ru"]}
@@ -583,12 +583,21 @@ def head(p, title_key, desc_key, canonical, schema_blocks, preload):
             '    <meta name="google-site-verification" content="FAzDuWo7z2bBkNbQNbmViVF--vvNtOLLbDFoWxKrhlI" />\n'
             '    <meta name="yandex-verification" content="151addc1d4f4fe84" />\n'
         )
+    if p.slug == "home":
+        verification += (
+            f'    <link rel="alternate" hreflang="kk" href="{SITE}/" />\n'
+            f'    <link rel="alternate" hreflang="ru" href="{SITE}/ru/" />\n'
+            f'    <link rel="alternate" hreflang="x-default" href="{SITE}/" />\n'
+        )
     schemas = "\n".join(
         f'    <script type="application/ld+json">\n{json.dumps(b, ensure_ascii=False, indent=2)}\n    </script>'
         for b in schema_blocks
     )
+    lang_urls = ' data-lang-urls=\'{"kz": "/", "ru": "/ru/"}\' data-page-lang-locked' if p.slug == "home" else ""
+    if p.slug == "home" and p.lang == "kz":
+        lang_urls = lang_urls.replace(" data-page-lang-locked", "")
     return f"""<!doctype html>
-<html lang="{HTML_LANG[p.lang]}" data-default-lang="{p.lang}">
+<html lang="{HTML_LANG[p.lang]}" data-default-lang="{p.lang}"{lang_urls}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -674,6 +683,8 @@ def home_schema(p):
     data = {"@context": "https://schema.org", **data}
     data.update({
         "description": p.s("schemaDescription"),
+        "url": f"{SITE}{p.path}",
+        "inLanguage": HTML_LANG[p.lang],
         "image": f"{SITE}/assets/og-image.jpg",
         "logo": f"{SITE}/assets/logo.png",
         "areaServed": {"@type": "City", "name": "Astana"},
@@ -707,12 +718,12 @@ def home_schema(p):
 
 
 # ---------------------------------------------------------------- home
-def build_home():
+def build_home(lang="kz", path="/"):
     strings = {**LEGACY, **C.COMMON, **C.FORM, **C.HOME, **C.PRESS, **press_dates()}
     ids = ["services", "full-cycle", "how-we-work", "formats", "territory", "parking", "pricing", "training-audit",
            "works", "facilities", "about", "press", "faq", "quote", "contact"]
-    p = Page("home", "/", "kz", strings, ids)
-    out = [head(p, "pageTitle", "pageDescription", f"{SITE}/", home_schema(p), "hero-machine")]
+    p = Page("home", path, lang, strings, ids)
+    out = [head(p, "pageTitle", "pageDescription", f"{SITE}{path}", home_schema(p), "hero-machine")]
     out.append(header(p))
     hero = f"""
     <main id="top">
@@ -1312,7 +1323,9 @@ def main():
     p, html_text = build_home()
     pages.append(("index.html", html_text))
     write_i18n(p, html_text)
-    urls = [("/", "1.0")]
+    rp, ru_text = build_home("ru", "/ru/")
+    pages.append(("ru/index.html", ru_text))
+    urls = [("/", "1.0"), ("/ru/", "1.0")]
     for slug, nav_key, strings, image, preset in SERVICE_PAGES:
         sp, text = build_service(slug, nav_key, strings, image, preset)
         pages.append((f"{slug}/index.html", text))

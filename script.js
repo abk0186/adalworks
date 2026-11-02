@@ -164,8 +164,32 @@ document.querySelectorAll('[data-dropdown]').forEach((dropdown) => {
   });
 });
 
+// Pages with their own URL per language (home: / = KZ, /ru/ = RU) switch by navigation.
+const languageUrls = (() => {
+  try {
+    return JSON.parse(document.documentElement.dataset.langUrls || '{}');
+  } catch {
+    return {};
+  }
+})();
+const pageLanguageLocked = document.documentElement.hasAttribute('data-page-lang-locked');
+
 languageButtons.forEach((button) => {
-  button.addEventListener('click', () => setLanguage(button.dataset.lang, { persist: true }));
+  button.addEventListener('click', () => {
+    const lang = button.dataset.lang;
+    const target = languageUrls[lang];
+    if (target && target !== window.location.pathname) {
+      saveLanguage(lang);
+      window.location.href = target + (lang === 'ru' ? '' : `?lang=${lang}`) + window.location.hash;
+      return;
+    }
+    if (!target && pageLanguageLocked && languageUrls.kz) {
+      saveLanguage(lang);
+      window.location.href = `${languageUrls.kz}?lang=${lang}${window.location.hash}`;
+      return;
+    }
+    setLanguage(lang, { persist: true });
+  });
 });
 
 const observer = new IntersectionObserver(
@@ -487,4 +511,5 @@ const urlLanguage = (() => {
 })();
 
 if (urlLanguage) setLanguage(urlLanguage, { persist: true });
+else if (pageLanguageLocked) setLanguage(defaultLanguage);
 else setLanguage(readSavedLanguage() || detectLanguage());
